@@ -18,8 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = UITabBarController()
+        window?.rootViewController = SXTabBarController()
         window?.makeKeyAndVisible()
+        
+        configureNaviagationBar()
+    }
+    
+    func configureNaviagationBar() {
+        UINavigationBar.appearance().tintColor = .systemRed
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
