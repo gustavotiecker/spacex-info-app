@@ -20,6 +20,12 @@
 		93A33A73257FB83F00DD4A3C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A72257FB83F00DD4A3C /* Constants.swift */; };
 		93A33A78257FBD6E00DD4A3C /* SXTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A77257FBD6E00DD4A3C /* SXTitleLabel.swift */; };
 		93A33A7B257FC09D00DD4A3C /* SXBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A7A257FC09D00DD4A3C /* SXBodyLabel.swift */; };
+		93A33A812580097E00DD4A3C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A802580097E00DD4A3C /* NetworkManager.swift */; };
+		93A33A8525800A4D00DD4A3C /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A8425800A4D00DD4A3C /* Launch.swift */; };
+		93A33A8A25801E0100DD4A3C /* SXAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A8925801E0100DD4A3C /* SXAlertContainerView.swift */; };
+		93A33A8E25801E8000DD4A3C /* SXAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A8D25801E8000DD4A3C /* SXAlertVC.swift */; };
+		93A33A9325801F0900DD4A3C /* SXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A9225801F0900DD4A3C /* SXButton.swift */; };
+		93A33A972580237500DD4A3C /* SXError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A962580237500DD4A3C /* SXError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +44,12 @@
 		93A33A72257FB83F00DD4A3C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		93A33A77257FBD6E00DD4A3C /* SXTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXTitleLabel.swift; sourceTree = "<group>"; };
 		93A33A7A257FC09D00DD4A3C /* SXBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXBodyLabel.swift; sourceTree = "<group>"; };
+		93A33A802580097E00DD4A3C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		93A33A8425800A4D00DD4A3C /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		93A33A8925801E0100DD4A3C /* SXAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXAlertContainerView.swift; sourceTree = "<group>"; };
+		93A33A8D25801E8000DD4A3C /* SXAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXAlertVC.swift; sourceTree = "<group>"; };
+		93A33A9225801F0900DD4A3C /* SXButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXButton.swift; sourceTree = "<group>"; };
+		93A33A962580237500DD4A3C /* SXError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +82,8 @@
 		9346579A257A762E00392967 /* SpaceXInfo */ = {
 			isa = PBXGroup;
 			children = (
+				93A33A8325800A2100DD4A3C /* Model */,
+				93A33A7F2580096800DD4A3C /* Managers */,
 				93A33A71257FB82B00DD4A3C /* Utilities */,
 				934657B4257ABC6500392967 /* Screens */,
 				934657B3257ABC5800392967 /* CustomViews */,
@@ -85,6 +99,9 @@
 		934657B3257ABC5800392967 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				93A33A9125801EE800DD4A3C /* Buttons */,
+				93A33A8C25801E5E00DD4A3C /* ViewControllers */,
+				93A33A8825801DCF00DD4A3C /* Views */,
 				93A33A76257FBD5300DD4A3C /* Labels */,
 				93A33A6D257FB7EF00DD4A3C /* ImageViews */,
 				93A33A69257FB52A00DD4A3C /* Cells */,
@@ -131,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				93A33A72257FB83F00DD4A3C /* Constants.swift */,
+				93A33A962580237500DD4A3C /* SXError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -142,6 +160,46 @@
 				93A33A7A257FC09D00DD4A3C /* SXBodyLabel.swift */,
 			);
 			path = Labels;
+			sourceTree = "<group>";
+		};
+		93A33A7F2580096800DD4A3C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				93A33A802580097E00DD4A3C /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		93A33A8325800A2100DD4A3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93A33A8425800A4D00DD4A3C /* Launch.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		93A33A8825801DCF00DD4A3C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93A33A8925801E0100DD4A3C /* SXAlertContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		93A33A8C25801E5E00DD4A3C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				93A33A8D25801E8000DD4A3C /* SXAlertVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		93A33A9125801EE800DD4A3C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				93A33A9225801F0900DD4A3C /* SXButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,15 +271,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93A33A9325801F0900DD4A3C /* SXButton.swift in Sources */,
+				93A33A812580097E00DD4A3C /* NetworkManager.swift in Sources */,
+				93A33A972580237500DD4A3C /* SXError.swift in Sources */,
 				93A33A5D257ED66300DD4A3C /* UpcomingLaunchesVC.swift in Sources */,
 				9346579C257A762E00392967 /* AppDelegate.swift in Sources */,
 				93A33A6F257FB80F00DD4A3C /* SXAvatarImageView.swift in Sources */,
+				93A33A8A25801E0100DD4A3C /* SXAlertContainerView.swift in Sources */,
 				93A33A60257ED6A000DD4A3C /* LatestLaunchesVC.swift in Sources */,
 				9346579E257A762E00392967 /* SceneDelegate.swift in Sources */,
+				93A33A8E25801E8000DD4A3C /* SXAlertVC.swift in Sources */,
 				93A33A67257EDB8E00DD4A3C /* SXTabBarController.swift in Sources */,
 				93A33A6B257FB55B00DD4A3C /* LaunchCell.swift in Sources */,
 				93A33A7B257FC09D00DD4A3C /* SXBodyLabel.swift in Sources */,
 				93A33A63257ED7D200DD4A3C /* RocketsVC.swift in Sources */,
+				93A33A8525800A4D00DD4A3C /* Launch.swift in Sources */,
 				93A33A78257FBD6E00DD4A3C /* SXTitleLabel.swift in Sources */,
 				93A33A73257FB83F00DD4A3C /* Constants.swift in Sources */,
 			);
