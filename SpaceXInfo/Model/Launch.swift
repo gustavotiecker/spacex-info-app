@@ -7,10 +7,24 @@
 
 import Foundation
 
-struct Launch {
-    var missionName: String
-    var missionDate: Date
-    var avatarURL: String?
-    var rocketID: String?
-    var campaignURL: String?
+struct Launch: Codable {
+    //var links: Links
+    var rocket: String
+    var details: String
+    var name: String
+    var dateUtc: Date
 }
+
+//struct Links: Codable {
+//    var patch: Patch
+//    var reddit: Reddit
+//}
+//
+//struct Patch: Codable {
+//    var small: String?
+//    var large: String?
+//}
+//
+//struct Reddit: Codable {
+//    var campaign: String?
+//}

@@ -18,9 +18,22 @@ class NetworkManager {
     func getUpcomingLaunches(completed: @escaping (Result<[Launch], SXError>) -> Void) {
         let endpoint = baseURL + "/launches/upcoming"
         
-        guard let url = URL(string: endpoint) else {
-            completed(.failure(.invalidRequest))
-            return
+        AF.request(endpoint).response { response in
+            
+            guard let data = response.data else {
+                completed(.failure(.invalidRequest))
+                return
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let launches = try decoder.decode([Launch].self, from: data)
+                completed(.success(launches))
+            } catch {
+                completed(.failure(.invalidRequest))
+            }
+            
         }
     }
 }
