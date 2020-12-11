@@ -7,24 +7,29 @@
 
 import Foundation
 
-struct Launch: Codable {
-    //var links: Links
-    var rocket: String
-    var details: String
-    var name: String
-    var dateUtc: Date
+struct Launch {
+    let flightNumber: Int
+    let missionName: String
+    let missionDetails: String
+    let date: Date
+    let rocketID: String
+    let landingType: String?
+    
 }
 
-//struct Links: Codable {
-//    var patch: Patch
-//    var reddit: Reddit
-//}
-//
-//struct Patch: Codable {
-//    var small: String?
-//    var large: String?
-//}
-//
-//struct Reddit: Codable {
-//    var campaign: String?
-//}
+extension Launch: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case flightNumber = "flight_number"
+        case missionName = "name"
+        case missionDetails = "details"
+        case date = "date_utc"
+        case rocketID = "rocket"
+        case landingType
+    }
+    
+    enum CoresKeys: String, CodingKey {
+        case landingType = "landing_type"
+    }
+    
+    init(from decoder: Decoder) throws { }
+}
