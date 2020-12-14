@@ -42,6 +42,7 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
+                //print(String(decoding: data, as: UTF8.self))
                 let launches = try decoder.decode([Launch].self, from: data)
                 completetion(.success(launches))
             } catch {

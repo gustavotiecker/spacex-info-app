@@ -5,7 +5,7 @@
 //  Created by Gustavo Tiecker on 08/12/20.
 //
 
-import Foundation
+import UIKit
 
 struct Launch {
     let flightNumber: Int
@@ -13,8 +13,8 @@ struct Launch {
     let missionDetails: String
     let date: Date
     let rocketID: String
-    let landingType: String?
-    
+    let smallPatchURL: URL?
+    let largePatchURL: URL?
 }
 
 extension Launch: Decodable {
@@ -24,12 +24,28 @@ extension Launch: Decodable {
         case missionDetails = "details"
         case date = "date_utc"
         case rocketID = "rocket"
-        case landingType
+        case links
+
+        enum LinksKeys: String, CodingKey {
+            case patch = "patch"
+
+            enum PatchKeys: String, CodingKey {
+                case smallPatch = "small"
+                case largePatch = "large"
+            }
+        }
     }
-    
-    enum CoresKeys: String, CodingKey {
-        case landingType = "landing_type"
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        flightNumber = try container.decode(Int.self, forKey: .flightNumber)
+        missionName = try container.decode(String.self, forKey: .missionName)
+        missionDetails = try container.decode(String.self, forKey: .missionDetails)
+        date = try container.decode(Date.self, forKey: .date)
+        rocketID = try container.decode(String.self, forKey: .rocketID)
+
+        let linksContainer = try container.nestedContainer(keyedBy: CodingKeys.LinksKeys.PatchKeys.self, forKey: .links)
+        smallPatchURL = try linksContainer.decode(URL.self, forKey: .smallPatch)
+        largePatchURL = try linksContainer.decode(URL.self, forKey: .largePatch)
     }
-    
-    init(from decoder: Decoder) throws { }
 }
