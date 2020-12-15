@@ -14,5 +14,5 @@ enum SFSymbols {
 }
 
 enum Images {
-    static let placeholder = UIImage(named: "avatar-placeholder")
+    static let placeholder = UIImage(named: "patch-placeholder")
 }

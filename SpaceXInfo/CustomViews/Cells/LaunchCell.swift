@@ -23,12 +23,21 @@ class LaunchCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func set(launch: Launch) {
+        missionName.text = launch.name
+        if let smallPatchURL = launch.links.patch.small {
+            avatarImageView.downloadImage(fromURL: smallPatchURL)
+        }
+        missionDate.text = launch.dateUtc.convertToMonthDayYearTimeFormat()
+    }
+    
     private func configure() {
         addSubview(avatarImageView)
         addSubview(missionName)
         addSubview(missionDate)
         accessoryType = .disclosureIndicator
         let padding: CGFloat = 8
+        let paddingTopBottom: CGFloat = 12
         
         NSLayoutConstraint.activate([
             avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
@@ -36,12 +45,12 @@ class LaunchCell: UITableViewCell {
             avatarImageView.heightAnchor.constraint(equalToConstant: 60),
             avatarImageView.widthAnchor.constraint(equalToConstant: 60),
             
-            missionName.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
+            missionName.topAnchor.constraint(equalTo: self.topAnchor, constant: paddingTopBottom),
             missionName.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 24),
             missionName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             missionName.heightAnchor.constraint(equalToConstant: 20),
             
-            missionDate.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: padding),
+            missionDate.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -paddingTopBottom),
             missionDate.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 24),
             missionDate.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             missionDate.heightAnchor.constraint(equalToConstant: 20)

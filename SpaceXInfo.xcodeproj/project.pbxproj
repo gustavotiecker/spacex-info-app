@@ -12,6 +12,7 @@
 		934657A5257A763200392967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 934657A4257A763200392967 /* Assets.xcassets */; };
 		934657A8257A763200392967 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 934657A6257A763200392967 /* LaunchScreen.storyboard */; };
 		9360D26F2587E5DA000690E0 /* Launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 9360D26E2587E5DA000690E0 /* Launches.json */; };
+		9360D27625883290000690E0 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9360D27525883290000690E0 /* Date+Ext.swift */; };
 		9395082125815E6A00B40C62 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395082025815E6A00B40C62 /* UIViewController+Ext.swift */; };
 		939508262584163400B40C62 /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939508252584163400B40C62 /* DateFormatter+Ext.swift */; };
 		93A33A5D257ED66300DD4A3C /* UpcomingLaunchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A5C257ED66300DD4A3C /* UpcomingLaunchesVC.swift */; };
@@ -39,6 +40,7 @@
 		934657A7257A763200392967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		934657A9257A763200392967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9360D26E2587E5DA000690E0 /* Launches.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Launches.json; sourceTree = "<group>"; };
+		9360D27525883290000690E0 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		9395082025815E6A00B40C62 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		939508252584163400B40C62 /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
 		93A33A5C257ED66300DD4A3C /* UpcomingLaunchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingLaunchesVC.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				9395082025815E6A00B40C62 /* UIViewController+Ext.swift */,
 				939508252584163400B40C62 /* DateFormatter+Ext.swift */,
+				9360D27525883290000690E0 /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				93A33A8525800A4D00DD4A3C /* Launch.swift in Sources */,
 				93A33A78257FBD6E00DD4A3C /* SXTitleLabel.swift in Sources */,
 				93A33A73257FB83F00DD4A3C /* Constants.swift in Sources */,
+				9360D27625883290000690E0 /* Date+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

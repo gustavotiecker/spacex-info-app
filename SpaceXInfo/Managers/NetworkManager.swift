@@ -42,12 +42,28 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
-                //print(String(decoding: data, as: UTF8.self))
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let launches = try decoder.decode([Launch].self, from: data)
                 completetion(.success(launches))
             } catch {
                 completetion(.failure(.invalidData))
             }
+        }
+        
+        task.resume()
+    }
+    
+    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard error == nil,
+                let response = response as? HTTPURLResponse, response.statusCode == 200,
+                let data = data,
+                let image = UIImage(data: data) else {
+                    completion(nil)
+                    return
+                }
+            
+            completion(image)
         }
         
         task.resume()
