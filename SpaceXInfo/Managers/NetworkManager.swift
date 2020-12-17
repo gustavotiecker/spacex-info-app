@@ -14,28 +14,28 @@ class NetworkManager {
     
     private init() {}
     
-    func getUpcomingLaunches(completetion: @escaping (Result<[Launch], SXError>) -> Void) {
+    func getUpcomingLaunches(completion: @escaping (Result<[Launch], SXError>) -> Void) {
         let endpoint = baseURL + "/launches/upcoming"
         
         guard let url = URL(string: endpoint) else {
-            completetion(.failure(.invalidRequest))
+            completion(.failure(.invalidRequest))
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let _ = error {
-                completetion(.failure(.unableToComplete))
+                completion(.failure(.unableToComplete))
                 return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completetion(.failure(.invalidResponse))
+                completion(.failure(.invalidResponse))
                 return
             }
             
             guard let data = data else {
-                completetion(.failure(.invalidData))
+                completion(.failure(.invalidData))
                 return
             }
             
@@ -44,9 +44,48 @@ class NetworkManager {
                 decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let launches = try decoder.decode([Launch].self, from: data)
-                completetion(.success(launches))
+                completion(.success(launches))
             } catch {
-                completetion(.failure(.invalidData))
+                completion(.failure(.invalidData))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func getRockets(completion: @escaping (Result<[Rocket], SXError>) -> Void) {
+        let endpoint = baseURL + "/rockets"
+        
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(.invalidRequest))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            if let _ = error {
+                completion(.failure(.unableToComplete))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let rockets = try decoder.decode([Rocket].self, from: data)
+                completion(.success(rockets))
+            } catch {
+                completion(.failure(.invalidData))
             }
         }
         

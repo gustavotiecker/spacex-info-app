@@ -16,10 +16,6 @@ class UpcomingLaunchesVC: UIViewController {
         super.viewDidLoad()
         configureViewController()
         confiugreTableView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         getLaunches()
     }
     
@@ -36,8 +32,8 @@ class UpcomingLaunchesVC: UIViewController {
         tableView.rowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableFooterView = UIView(frame: .zero)
-
+        tableView.removeExcessCells()
+        
         tableView.register(LaunchCell.self, forCellReuseIdentifier: LaunchCell.reuseID)
     }
     
@@ -56,9 +52,7 @@ class UpcomingLaunchesVC: UIViewController {
     
     func updateUI(with launches: [Launch]) {
         self.upcomingLaunches = launches
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        tableView.reloadDataOnMainThread()
     }
 }
 
