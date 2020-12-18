@@ -21,8 +21,8 @@ class SPXAvatarImageView: UIImageView {
     }
     
     private func configure() {
-        clipsToBounds = true
         layer.cornerRadius = 10
+        clipsToBounds = true
         image = placeholderImage
         translatesAutoresizingMaskIntoConstraints = false
     }

@@ -9,11 +9,6 @@ import UIKit
 
 class RocketInfoVC: UIViewController {
     
-    let scrollView = UIScrollView()
-    let contentView = UIView()
-    
-    let headerView = UIView()
-    
     var rocket: Rocket!
     
     init(rocket: Rocket) {
@@ -28,9 +23,8 @@ class RocketInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
-        configureScrollView()
         layoutUI()
-        configureUIElements()
+        //configureUIElements()
     }
     
     func configureViewController() {
@@ -39,31 +33,20 @@ class RocketInfoVC: UIViewController {
         navigationItem.rightBarButtonItem = doneButton
     }
     
-    func configureScrollView() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        
-        scrollView.pinToEdges(of: view)
-        contentView.pinToEdges(of: scrollView)
-        
-        NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: 600)
-        ])
-    }
-    
-    func configureUIElements() {
-        self.add(childVC: SPXRocketInfoHeaderVC(rocket: rocket), to: self.headerView)
-    }
+//    func configureUIElements() {
+//        self.add(childVC: SPXRocketInfoHeaderVC(rocket: rocket), to: self.headerView)
+//    }
     
     func layoutUI() {
-        let padding: CGFloat = 20
+        let headerView = SPXRocketInfoHeaderView(rocket: rocket)
+        view.addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            headerView.heightAnchor.constraint(equalToConstant: 210)
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 180)
         ])
     }
     

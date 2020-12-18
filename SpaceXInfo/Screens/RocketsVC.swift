@@ -71,7 +71,7 @@ extension RocketsVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let rocket = rockets[indexPath.item]
+        let rocket = rockets[indexPath.row]
         
         let destVC = RocketInfoVC(rocket: rocket)
         

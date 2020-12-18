@@ -12,14 +12,14 @@ class SPXRocketInfoHeaderVC: UIViewController {
     let avatarImageView = SPXAvatarImageView(frame: .zero)
     let nameLabel = SPXTitleLabel(textAlignment: .left, fontSize: 34)
     let activeLabel = SPXSecondaryTitleLabel(fontSize: 18)
-    let successRateLabel = SPXSecondaryTitleLabel(fontSize: 18)
-    let descriptionLabel = SPXBodyLabel(textAlignment: .left)
+//    let successRateLabel = SPXSecondaryTitleLabel(fontSize: 18)
+//    let descriptionLabel = SPXBodyLabel(textAlignment: .left)
     
     var rocket: Rocket!
     
     init(rocket: Rocket) {
         super.init(nibName: nil, bundle: nil)
-        self.rocket = rocket;
+        self.rocket = rocket
     }
     
     required init?(coder: NSCoder) {
@@ -28,7 +28,7 @@ class SPXRocketInfoHeaderVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubviews(avatarImageView, nameLabel, activeLabel, successRateLabel, descriptionLabel)
+        view.addSubviews(avatarImageView, nameLabel, activeLabel)
         layoutUI()
         configureUIElements()
     }
@@ -36,10 +36,11 @@ class SPXRocketInfoHeaderVC: UIViewController {
     func configureUIElements() {
         avatarImageView.downloadImage(fromURL: rocket.flickrImages[0])
         nameLabel.text = rocket.name
-        styleActiveLabel()
-        successRateLabel.text = "\(rocket.successRatePct) %"
-        descriptionLabel.text = rocket.description
-        descriptionLabel.numberOfLines = 3
+        activeLabel.text = "Active"
+//        styleActiveLabel()
+//        successRateLabel.text = "\(rocket.successRatePct) %"
+//        descriptionLabel.text = rocket.description
+//        descriptionLabel.numberOfLines = 3
     }
     
     func layoutUI() {
@@ -48,29 +49,29 @@ class SPXRocketInfoHeaderVC: UIViewController {
         
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             avatarImageView.widthAnchor.constraint(equalToConstant: 90),
             avatarImageView.heightAnchor.constraint(equalToConstant: 90),
             
             nameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             nameLabel.heightAnchor.constraint(equalToConstant: 38),
-            
+
             activeLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: 8),
             activeLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
-            activeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            activeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             activeLabel.heightAnchor.constraint(equalToConstant: 20),
-            
-            successRateLabel.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
-            successRateLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
-            successRateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            successRateLabel.heightAnchor.constraint(equalToConstant: 20),
-            
-            descriptionLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: textImagePadding),
-            descriptionLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 90)
+//
+//            successRateLabel.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
+//            successRateLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
+//            successRateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            successRateLabel.heightAnchor.constraint(equalToConstant: 20),
+//
+//            descriptionLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: textImagePadding),
+//            descriptionLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
+//            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+//            descriptionLabel.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
     

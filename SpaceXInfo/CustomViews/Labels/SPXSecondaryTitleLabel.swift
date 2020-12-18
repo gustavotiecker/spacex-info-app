@@ -11,6 +11,7 @@ class SPXSecondaryTitleLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -22,7 +23,7 @@ class SPXSecondaryTitleLabel: UILabel {
         font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
     }
     
-    func configure() {
+    private func configure() {
         textColor = .secondaryLabel
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.90

@@ -37,6 +37,7 @@
 		93C7D6AE258B9C8600293A2F /* SPXRocketInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6AD258B9C8600293A2F /* SPXRocketInfoHeaderVC.swift */; };
 		93C7D6B1258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6B0258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift */; };
 		93C7D6BB258C410800293A2F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6BA258C410800293A2F /* UIView+Ext.swift */; };
+		93C7D6C3258D183800293A2F /* SPXRocketInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		93C7D6AD258B9C8600293A2F /* SPXRocketInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXRocketInfoHeaderVC.swift; sourceTree = "<group>"; };
 		93C7D6B0258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		93C7D6BA258C410800293A2F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXRocketInfoHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				93A33A8925801E0100DD4A3C /* SPXAlertContainerView.swift */,
+				93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				93C7D6B1258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift in Sources */,
 				93A33A6F257FB80F00DD4A3C /* SPXAvatarImageView.swift in Sources */,
 				93A33A8A25801E0100DD4A3C /* SPXAlertContainerView.swift in Sources */,
+				93C7D6C3258D183800293A2F /* SPXRocketInfoHeaderView.swift in Sources */,
 				93A33A60257ED6A000DD4A3C /* LatestLaunchesVC.swift in Sources */,
 				93C7D6AB258B992800293A2F /* RocketInfoVC.swift in Sources */,
 				9395082125815E6A00B40C62 /* UIViewController+Ext.swift in Sources */,
