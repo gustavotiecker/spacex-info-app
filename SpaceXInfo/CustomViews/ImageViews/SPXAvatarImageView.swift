@@ -1,5 +1,5 @@
 //
-//  SXAvatarImageView.swift
+//  SPXAvatarImageView.swift
 //  SpaceXInfo
 //
 //  Created by Gustavo Tiecker on 08/12/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SXAvatarImageView: UIImageView {
+class SPXAvatarImageView: UIImageView {
     
     let placeholderImage = Images.placeholder
     

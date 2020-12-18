@@ -69,4 +69,13 @@ extension RocketsVC: UITableViewDataSource, UITableViewDelegate {
         cell.set(rocket: rocket)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let rocket = rockets[indexPath.item]
+        
+        let destVC = RocketInfoVC(rocket: rocket)
+        
+        let navController = UINavigationController(rootViewController: destVC)
+        present(navController, animated: true)
+    }
 }

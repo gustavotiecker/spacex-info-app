@@ -10,9 +10,9 @@ import UIKit
 class LaunchCell: UITableViewCell {
     
     static let reuseID = "LaunchCell"
-    let avatarImageView = SXAvatarImageView(frame: .zero)
-    let missionName = SXTitleLabel(textAlignment: .left, fontSize: 16)
-    let missionDate = SXBodyLabel(textAlignment: .left)
+    let avatarImageView = SPXAvatarImageView(frame: .zero)
+    let missionName = SPXTitleLabel(textAlignment: .left, fontSize: 16)
+    let missionDate = SPXBodyLabel(textAlignment: .left)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,9 +32,7 @@ class LaunchCell: UITableViewCell {
     }
     
     private func configure() {
-        addSubview(avatarImageView)
-        addSubview(missionName)
-        addSubview(missionDate)
+        addSubviews(avatarImageView, missionName, missionDate)
         accessoryType = .disclosureIndicator
         let padding: CGFloat = 8
         let paddingTopBottom: CGFloat = 12

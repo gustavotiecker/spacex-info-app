@@ -14,7 +14,7 @@ class NetworkManager {
     
     private init() {}
     
-    func getUpcomingLaunches(completion: @escaping (Result<[Launch], SXError>) -> Void) {
+    func getUpcomingLaunches(completion: @escaping (Result<[Launch], SPXError>) -> Void) {
         let endpoint = baseURL + "/launches/upcoming"
         
         guard let url = URL(string: endpoint) else {
@@ -53,7 +53,7 @@ class NetworkManager {
         task.resume()
     }
     
-    func getRockets(completion: @escaping (Result<[Rocket], SXError>) -> Void) {
+    func getRockets(completion: @escaping (Result<[Rocket], SPXError>) -> Void) {
         let endpoint = baseURL + "/rockets"
         
         guard let url = URL(string: endpoint) else {

@@ -10,8 +10,8 @@ import UIKit
 class RocketCell: UITableViewCell {
     
     static let reuseID = "RocketCell"
-    let avatarImageView = SXAvatarImageView(frame: .zero)
-    let rocketNameLabel = SXTitleLabel(textAlignment: .left, fontSize: 26)
+    let avatarImageView = SPXAvatarImageView(frame: .zero)
+    let rocketNameLabel = SPXTitleLabel(textAlignment: .left, fontSize: 26)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,8 +28,7 @@ class RocketCell: UITableViewCell {
     }
     
     func configure() {
-        addSubview(avatarImageView)
-        addSubview(rocketNameLabel)
+        addSubviews(avatarImageView, rocketNameLabel)
         
         accessoryType = .disclosureIndicator
         let padding: CGFloat = 12

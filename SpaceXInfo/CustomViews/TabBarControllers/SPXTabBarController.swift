@@ -1,5 +1,5 @@
 //
-//  SXTabBarController.swift
+//  SPXTabBarController.swift
 //  SpaceXInfo
 //
 //  Created by Gustavo Tiecker on 07/12/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SXTabBarController: UITabBarController {
+class SPXTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

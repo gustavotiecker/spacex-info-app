@@ -1,5 +1,5 @@
 //
-//  SXAlertContainerView.swift
+//  SPXAlertContainerView.swift
 //  SpaceXInfo
 //
 //  Created by Gustavo Tiecker on 08/12/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SXAlertContainerView: UIView {
+class SPXAlertContainerView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

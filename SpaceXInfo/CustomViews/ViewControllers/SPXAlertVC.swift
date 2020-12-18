@@ -1,5 +1,5 @@
 //
-//  SXAlertVC.swift
+//  SPXAlertVC.swift
 //  SpaceXInfo
 //
 //  Created by Gustavo Tiecker on 08/12/20.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class SXAlertVC: UIViewController {
+class SPXAlertVC: UIViewController {
     
-    let containerView = SXAlertContainerView()
-    let titleLabel = SXTitleLabel(textAlignment: .center, fontSize: 20)
-    let messageLabel = SXBodyLabel(textAlignment: .center)
-    let actionButton = SXButton(backgroundColor: .systemRed, title: "Ok")
+    let containerView = SPXAlertContainerView()
+    let titleLabel = SPXTitleLabel(textAlignment: .center, fontSize: 20)
+    let messageLabel = SPXBodyLabel(textAlignment: .center)
+    let actionButton = SPXButton(backgroundColor: .systemRed, title: "Ok")
     
     var alertTitle: String?
     var message: String?
@@ -34,10 +34,7 @@ class SXAlertVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
-        view.addSubview(containerView)
-        view.addSubview(titleLabel)
-        view.addSubview(actionButton)
-        view.addSubview(messageLabel)
+        view.addSubviews(containerView, titleLabel, actionButton, messageLabel)
         
         configureContainerView()
         configureTitleLabel()

@@ -1,5 +1,5 @@
 //
-//  SXBodyLabel.swift
+//  SPXTitleLabel.swift
 //  SpaceXInfo
 //
 //  Created by Gustavo Tiecker on 08/12/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SXBodyLabel: UILabel {
+class SPXTitleLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,18 +18,17 @@ class SXBodyLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(textAlignment: NSTextAlignment) {
+    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
+        self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
     }
     
     private func configure() {
-        textColor = .secondaryLabel
-        font = UIFont.preferredFont(forTextStyle: .body)
-        adjustsFontForContentSizeCategory = true
+        textColor = .label
         adjustsFontSizeToFitWidth = true
-        minimumScaleFactor = 0.75
-        lineBreakMode = .byWordWrapping
+        minimumScaleFactor = 0.9
+        lineBreakMode = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
