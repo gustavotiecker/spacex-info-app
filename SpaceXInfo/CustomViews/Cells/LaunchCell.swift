@@ -24,11 +24,11 @@ class LaunchCell: UITableViewCell {
     }
     
     func set(launch: Launch) {
-        missionName.text = launch.name
-        if let smallPatchURL = launch.links.patch.small {
+        missionName.text = launch.missionName
+        if let smallPatchURL = launch.smallPatchURL {
             avatarImageView.downloadImage(fromURL: smallPatchURL)
         }
-        missionDate.text = launch.dateUtc.convertToMonthDayYearTimeFormat()
+        missionDate.text = launch.date.convertToMonthDayYearTimeFormat()
     }
     
     private func configure() {

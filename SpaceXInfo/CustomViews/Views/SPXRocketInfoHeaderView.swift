@@ -15,6 +15,9 @@ class SPXRocketInfoHeaderView: UIView {
     let successRateLabel = SPXSecondaryTitleLabel(fontSize: 18)
     let descriptionLabel = SPXBodyLabel(textAlignment: .left)
     
+    let padding: CGFloat = 8
+    let imagePadding: CGFloat = 12
+    
     var rocket: Rocket!
     
     init(rocket: Rocket) {
@@ -37,11 +40,11 @@ class SPXRocketInfoHeaderView: UIView {
     }
     
     private func configureAvatarImageView() {
-        avatarImageView.downloadImage(fromURL: rocket.flickrImages[0])
+        avatarImageView.downloadImage(fromURL: rocket.images[0])
         
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
-            avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
+            avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: imagePadding),
+            avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: imagePadding),
             avatarImageView.widthAnchor.constraint(equalToConstant: 120),
             avatarImageView.heightAnchor.constraint(equalToConstant: 120)
         ])
@@ -52,14 +55,14 @@ class SPXRocketInfoHeaderView: UIView {
         
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12),
-            nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: imagePadding),
+            nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             nameLabel.heightAnchor.constraint(equalToConstant: 38)
         ])
     }
     
     private func configureActiveLabel() {
-        if (rocket.active) {
+        if (rocket.isActive) {
             activeLabel.text = "Active"
             activeLabel.textColor = .systemGreen
         } else {
@@ -68,7 +71,7 @@ class SPXRocketInfoHeaderView: UIView {
         }
         
         NSLayoutConstraint.activate([
-            activeLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor),
+            activeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: padding),
             activeLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             activeLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
             activeLabel.heightAnchor.constraint(equalToConstant: 22)
@@ -76,10 +79,10 @@ class SPXRocketInfoHeaderView: UIView {
     }
     
     private func configureSuccessRateLabel() {
-        successRateLabel.text = "Success rate: \(rocket.successRatePct) %"
+        successRateLabel.text = "Success rate: \(rocket.successRatePct)%"
         
         NSLayoutConstraint.activate([
-            successRateLabel.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -8),
+            successRateLabel.topAnchor.constraint(equalTo: activeLabel.bottomAnchor, constant: padding),
             successRateLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             successRateLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
             successRateLabel.heightAnchor.constraint(equalToConstant: 22)
@@ -91,10 +94,10 @@ class SPXRocketInfoHeaderView: UIView {
         descriptionLabel.numberOfLines = 7
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
+            descriptionLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: imagePadding),
             descriptionLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 200)
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 180)
         ])
     }
 }

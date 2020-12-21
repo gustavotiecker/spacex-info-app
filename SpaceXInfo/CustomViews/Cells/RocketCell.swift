@@ -23,7 +23,7 @@ class RocketCell: UITableViewCell {
     }
     
     func set(rocket: Rocket) {
-        avatarImageView.downloadImage(fromURL: rocket.flickrImages[0])
+        avatarImageView.downloadImage(fromURL: rocket.images[0])
         rocketNameLabel.text = rocket.name
     }
     

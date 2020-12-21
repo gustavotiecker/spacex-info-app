@@ -39,8 +39,11 @@ class RocketInfoVC: UIViewController {
     
     func layoutUI() {
         let headerView = SPXRocketInfoHeaderView(rocket: rocket)
-        view.addSubview(headerView)
+        //let rocketSpecsView = SPXRocketSpecsView(rocket: rocket)
+        view.addSubviews(headerView)
+        
         headerView.translatesAutoresizingMaskIntoConstraints = false
+        //rocketSpecsView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -48,6 +51,13 @@ class RocketInfoVC: UIViewController {
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 180)
         ])
+        
+//        NSLayoutConstraint.activate([
+//            rocketSpecsView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
+//            rocketSpecsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            rocketSpecsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            rocketSpecsView.heightAnchor.constraint(equalToConstant: 120)
+//        ])
     }
     
     func add(childVC: UIViewController, to containerView: UIView) {

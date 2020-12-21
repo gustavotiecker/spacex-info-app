@@ -34,7 +34,7 @@ class SPXRocketInfoHeaderVC: UIViewController {
     }
     
     func configureUIElements() {
-        avatarImageView.downloadImage(fromURL: rocket.flickrImages[0])
+        // test avatarImageView.downloadImage(fromURL: rocket.flickrImages[0])
         nameLabel.text = rocket.name
         activeLabel.text = "Active"
 //        styleActiveLabel()
@@ -74,14 +74,5 @@ class SPXRocketInfoHeaderVC: UIViewController {
 //            descriptionLabel.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
-    
-    func styleActiveLabel() {
-        if (rocket.active) {
-            activeLabel.text = "Active"
-            activeLabel.textColor = .systemGreen
-        } else {
-            activeLabel.text = "Inactive"
-            activeLabel.textColor = .systemRed
-        }
-    }
+
 }

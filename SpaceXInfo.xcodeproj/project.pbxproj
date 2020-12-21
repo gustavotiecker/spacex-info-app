@@ -38,6 +38,7 @@
 		93C7D6B1258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6B0258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift */; };
 		93C7D6BB258C410800293A2F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6BA258C410800293A2F /* UIView+Ext.swift */; };
 		93C7D6C3258D183800293A2F /* SPXRocketInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */; };
+		93C7D6C6258D53CF00293A2F /* SPXRocketSpecsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		93C7D6B0258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		93C7D6BA258C410800293A2F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXRocketInfoHeaderView.swift; sourceTree = "<group>"; };
+		93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXRocketSpecsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			children = (
 				93A33A8925801E0100DD4A3C /* SPXAlertContainerView.swift */,
 				93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */,
+				93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				939508262584163400B40C62 /* DateFormatter+Ext.swift in Sources */,
 				9346579C257A762E00392967 /* AppDelegate.swift in Sources */,
 				93C7D6B1258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift in Sources */,
+				93C7D6C6258D53CF00293A2F /* SPXRocketSpecsView.swift in Sources */,
 				93A33A6F257FB80F00DD4A3C /* SPXAvatarImageView.swift in Sources */,
 				93A33A8A25801E0100DD4A3C /* SPXAlertContainerView.swift in Sources */,
 				93C7D6C3258D183800293A2F /* SPXRocketInfoHeaderView.swift in Sources */,

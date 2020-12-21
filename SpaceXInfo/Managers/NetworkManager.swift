@@ -42,7 +42,6 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let launches = try decoder.decode([Launch].self, from: data)
                 completion(.success(launches))
             } catch {
@@ -81,7 +80,6 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let rockets = try decoder.decode([Rocket].self, from: data)
                 completion(.success(rockets))
             } catch {
