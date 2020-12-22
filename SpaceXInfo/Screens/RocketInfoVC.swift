@@ -39,25 +39,25 @@ class RocketInfoVC: UIViewController {
     
     func layoutUI() {
         let headerView = SPXRocketInfoHeaderView(rocket: rocket)
-        //let rocketSpecsView = SPXRocketSpecsView(rocket: rocket)
-        view.addSubviews(headerView)
+        let rocketSpecsView = SPXRocketSpecsView(rocket: rocket, delegate: self)
+        view.addSubviews(headerView, rocketSpecsView)
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
-        //rocketSpecsView.translatesAutoresizingMaskIntoConstraints = false
+        rocketSpecsView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 180)
+            headerView.heightAnchor.constraint(equalToConstant: 320)
         ])
         
-//        NSLayoutConstraint.activate([
-//            rocketSpecsView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
-//            rocketSpecsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            rocketSpecsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            rocketSpecsView.heightAnchor.constraint(equalToConstant: 120)
-//        ])
+        NSLayoutConstraint.activate([
+            rocketSpecsView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
+            rocketSpecsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+            rocketSpecsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
+            rocketSpecsView.heightAnchor.constraint(equalToConstant: 260)
+        ])
     }
     
     func add(childVC: UIViewController, to containerView: UIView) {
@@ -69,5 +69,12 @@ class RocketInfoVC: UIViewController {
     
     @objc func dismissVC() {
         dismiss(animated: true)
+    }
+}
+
+extension RocketInfoVC: SPXItemDelegate {
+    
+    func didTapWikipediaButton(for rocket: Rocket) {
+        presentSafariVC(with: rocket.wikipediaURL)
     }
 }
