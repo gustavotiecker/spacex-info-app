@@ -82,7 +82,7 @@ class SPXRocketSpecsView: UIView {
             itemView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
-                itemView.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: padding),
+                itemView.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: padding * 2),
                 itemView.heightAnchor.constraint(equalToConstant: 50),
             ])
         }

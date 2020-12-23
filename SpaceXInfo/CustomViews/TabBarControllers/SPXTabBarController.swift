@@ -12,23 +12,23 @@ class SPXTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = .systemRed
-        viewControllers = [createUpcomingLaunchesVC(), createLatestLaunchesVC(), createRocketsVC()]
+        viewControllers = [createHomeVC(), createUpcomingLaunchesVC(), createRocketsVC()]
+    }
+    
+    func createHomeVC() -> UINavigationController {
+        let homeVC = LatestLaunchesVC()
+        homeVC.title = "Home"
+        homeVC.tabBarItem = UITabBarItem(title: "Home", image: SFSymbols.home, tag: 0)
+        
+        return UINavigationController(rootViewController: homeVC)
     }
     
     func createUpcomingLaunchesVC() -> UINavigationController {
         let upcomingLaunchesVC = UpcomingLaunchesVC()
         upcomingLaunchesVC.title = "Upcoming Launches"
-        upcomingLaunchesVC.tabBarItem = UITabBarItem(title: "Upcoming", image: SFSymbols.upcoming, tag: 0)
+        upcomingLaunchesVC.tabBarItem = UITabBarItem(title: "Upcoming", image: SFSymbols.upcoming, tag: 1)
         
         return UINavigationController(rootViewController: upcomingLaunchesVC)
-    }
-    
-    func createLatestLaunchesVC() -> UINavigationController {
-        let latestLaunchesVC = LatestLaunchesVC()
-        latestLaunchesVC.title = "Latest Launches"
-        latestLaunchesVC.tabBarItem = UITabBarItem(title: "Latest", image: SFSymbols.latest, tag: 1)
-        
-        return UINavigationController(rootViewController: latestLaunchesVC)
     }
     
     func createRocketsVC() -> UINavigationController{

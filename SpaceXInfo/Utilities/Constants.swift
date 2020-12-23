@@ -8,8 +8,8 @@
 import UIKit
 
 enum SFSymbols {
+    static let home = UIImage(systemName: "house")
     static let upcoming = UIImage(systemName: "arrow.right.square")
-    static let latest = UIImage(systemName: "clock.arrow.circlepath")
     static let rocket = UIImage(named: "rocketIcon")
     
     static let height = UIImage(named: "height-icon")

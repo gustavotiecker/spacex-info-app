@@ -31,6 +31,7 @@ class RocketCell: UITableViewCell {
         addSubviews(avatarImageView, rocketNameLabel)
         
         accessoryType = .disclosureIndicator
+        selectionStyle = .none
         let padding: CGFloat = 12
         
         NSLayoutConstraint.activate([

@@ -33,7 +33,10 @@ class LaunchCell: UITableViewCell {
     
     private func configure() {
         addSubviews(avatarImageView, missionName, missionDate)
+        
         accessoryType = .disclosureIndicator
+        selectionStyle = .none
+        
         let padding: CGFloat = 8
         let paddingTopBottom: CGFloat = 12
         
