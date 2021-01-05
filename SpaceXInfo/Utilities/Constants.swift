@@ -18,5 +18,6 @@ enum SFSymbols {
 }
 
 enum Images {
+    static let spaceXInfoLogo = UIImage(named: "spacex-info-logo")
     static let placeholder = UIImage(named: "patch-placeholder")
 }

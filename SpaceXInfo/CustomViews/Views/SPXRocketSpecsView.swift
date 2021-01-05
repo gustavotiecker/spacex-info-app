@@ -23,7 +23,7 @@ class SPXRocketSpecsView: UIView {
     let massItem = SPXRocketSpecItem()
     var itemViews: [UIView] = []
     
-    let wikipediaButton = SPXButton(backgroundColor: .systemPink, title: "Wikipedia's page")
+    let wikipediaButton = SPXButton(backgroundColor: .systemIndigo, title: "Wikipedia's page")
     
     let padding: CGFloat = 12
     

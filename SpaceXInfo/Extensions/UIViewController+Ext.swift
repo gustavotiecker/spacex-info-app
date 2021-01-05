@@ -21,7 +21,7 @@ extension UIViewController {
     
     func presentSafariVC(with url: URL) {
         let safariVC = SFSafariViewController(url: url)
-        safariVC.preferredControlTintColor = .systemPink
+        safariVC.preferredControlTintColor = .systemIndigo
         present(safariVC, animated: true)
     }
 }

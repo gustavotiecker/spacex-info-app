@@ -11,12 +11,12 @@ class SPXTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = .systemRed
+        UITabBar.appearance().tintColor = .systemIndigo
         viewControllers = [createHomeVC(), createUpcomingLaunchesVC(), createRocketsVC()]
     }
     
     func createHomeVC() -> UINavigationController {
-        let homeVC = LatestLaunchesVC()
+        let homeVC = HomeVC()
         homeVC.title = "Home"
         homeVC.tabBarItem = UITabBarItem(title: "Home", image: SFSymbols.home, tag: 0)
         

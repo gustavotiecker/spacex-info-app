@@ -40,6 +40,7 @@
 		93C7D6BB258C410800293A2F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6BA258C410800293A2F /* UIView+Ext.swift */; };
 		93C7D6C3258D183800293A2F /* SPXRocketInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */; };
 		93C7D6C6258D53CF00293A2F /* SPXRocketSpecsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */; };
+		93F9592925A4FAD3004690DB /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F9592825A4FAD3004690DB /* HomeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		93C7D6BA258C410800293A2F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXRocketInfoHeaderView.swift; sourceTree = "<group>"; };
 		93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXRocketSpecsView.swift; sourceTree = "<group>"; };
+		93F9592825A4FAD3004690DB /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				93A33A5F257ED6A000DD4A3C /* LatestLaunchesVC.swift */,
 				93A33A62257ED7D200DD4A3C /* RocketsVC.swift */,
 				93C7D6AA258B992800293A2F /* RocketInfoVC.swift */,
+				93F9592825A4FAD3004690DB /* HomeVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -227,10 +230,10 @@
 		93A33A8825801DCF00DD4A3C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				93A33A8925801E0100DD4A3C /* SPXAlertContainerView.swift */,
 				93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */,
 				93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */,
 				93ADF55F25914CC40039B104 /* SPXRocketSpecItem.swift */,
+				93A33A8925801E0100DD4A3C /* SPXAlertContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				93C7D6C3258D183800293A2F /* SPXRocketInfoHeaderView.swift in Sources */,
 				93ADF56025914CC40039B104 /* SPXRocketSpecItem.swift in Sources */,
 				93A33A60257ED6A000DD4A3C /* LatestLaunchesVC.swift in Sources */,
+				93F9592925A4FAD3004690DB /* HomeVC.swift in Sources */,
 				93C7D6AB258B992800293A2F /* RocketInfoVC.swift in Sources */,
 				9395082125815E6A00B40C62 /* UIViewController+Ext.swift in Sources */,
 				935038CB258AF01B0052EBBD /* UITableView+Ext.swift in Sources */,
