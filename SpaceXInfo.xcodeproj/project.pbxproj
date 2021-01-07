@@ -40,6 +40,7 @@
 		93C7D6BB258C410800293A2F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6BA258C410800293A2F /* UIView+Ext.swift */; };
 		93C7D6C3258D183800293A2F /* SPXRocketInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */; };
 		93C7D6C6258D53CF00293A2F /* SPXRocketSpecsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */; };
+		93C8569F25A65CF100C69E8F /* SPXNextLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8569E25A65CF100C69E8F /* SPXNextLaunchView.swift */; };
 		93F9592925A4FAD3004690DB /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F9592825A4FAD3004690DB /* HomeVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		93C7D6BA258C410800293A2F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXRocketInfoHeaderView.swift; sourceTree = "<group>"; };
 		93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXRocketSpecsView.swift; sourceTree = "<group>"; };
+		93C8569E25A65CF100C69E8F /* SPXNextLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXNextLaunchView.swift; sourceTree = "<group>"; };
 		93F9592825A4FAD3004690DB /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +236,7 @@
 				93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */,
 				93ADF55F25914CC40039B104 /* SPXRocketSpecItem.swift */,
 				93A33A8925801E0100DD4A3C /* SPXAlertContainerView.swift */,
+				93C8569E25A65CF100C69E8F /* SPXNextLaunchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			files = (
 				9360D2792588F8CC000690E0 /* Rocket.swift in Sources */,
 				93A33A9325801F0900DD4A3C /* SPXButton.swift in Sources */,
+				93C8569F25A65CF100C69E8F /* SPXNextLaunchView.swift in Sources */,
 				93A33A812580097E00DD4A3C /* NetworkManager.swift in Sources */,
 				93A33A972580237500DD4A3C /* SPXError.swift in Sources */,
 				93A33A5D257ED66300DD4A3C /* UpcomingLaunchesVC.swift in Sources */,

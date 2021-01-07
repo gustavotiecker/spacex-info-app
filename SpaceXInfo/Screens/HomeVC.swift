@@ -10,14 +10,15 @@ import UIKit
 class HomeVC: UIViewController {
     
     let logoImageView = UIImageView()
+    let nextLaunchView = SPXNextLaunchView(launchName: "Discover", withStringDate: "01 21, 2021 - 13:30:00")
     let latestLaunchButton = SPXButton(backgroundColor: .systemIndigo, title: "Latest Launch")
-    let nextLaunchButton = SPXButton(backgroundColor: .systemIndigo, title: "Next Launch")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        view.addSubviews(logoImageView, latestLaunchButton)
+        view.addSubviews(logoImageView, nextLaunchView, latestLaunchButton)
         configureLogoImageView()
+        configureNextLaunchView()
         configureLatestLaunchButton()
     }
     
@@ -38,11 +39,22 @@ class HomeVC: UIViewController {
         ])
     }
     
+    private func configureNextLaunchView() {
+        nextLaunchView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            nextLaunchView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 28),
+            nextLaunchView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
+            nextLaunchView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
+            nextLaunchView.heightAnchor.constraint(equalToConstant: 150)
+        ])
+    }
+    
     private func configureLatestLaunchButton() {
         NSLayoutConstraint.activate([
-            latestLaunchButton.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
-            latestLaunchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            latestLaunchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            latestLaunchButton.topAnchor.constraint(equalTo: nextLaunchView.bottomAnchor, constant: 28),
+            latestLaunchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
+            latestLaunchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
             latestLaunchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
