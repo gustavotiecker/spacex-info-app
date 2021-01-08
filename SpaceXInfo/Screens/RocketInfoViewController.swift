@@ -1,5 +1,5 @@
 //
-//  RocketInfoVC.swift
+//  RocketInfoViewController.swift
 //  SpaceXInfo
 //
 //  Created by Gustavo Tiecker on 17/12/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RocketInfoVC: UIViewController {
+class RocketInfoViewController: UIViewController {
     
     var rocket: Rocket!
     
@@ -72,7 +72,7 @@ class RocketInfoVC: UIViewController {
     }
 }
 
-extension RocketInfoVC: SPXItemDelegate {
+extension RocketInfoViewController: SPXItemDelegate {
     
     func didTapWikipediaButton(for rocket: Rocket) {
         presentSafariVC(with: rocket.wikipediaURL)

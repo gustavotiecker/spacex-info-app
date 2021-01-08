@@ -1,5 +1,5 @@
 //
-//  RocketsVC.swift
+//  RocketsViewController.swift
 //  SpaceXInfo
 //
 //  Created by Gustavo Tiecker on 07/12/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RocketsVC: UIViewController {
+class RocketsViewController: UIViewController {
     
     let tableView = UITableView()
     var rockets: [Rocket] = []
@@ -56,7 +56,7 @@ class RocketsVC: UIViewController {
     }
 }
 
-extension RocketsVC: UITableViewDataSource, UITableViewDelegate {
+extension RocketsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rockets.count
@@ -73,7 +73,7 @@ extension RocketsVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let rocket = rockets[indexPath.row]
         
-        let destVC = RocketInfoVC(rocket: rocket)
+        let destVC = RocketInfoViewController(rocket: rocket)
         
         let navController = UINavigationController(rootViewController: destVC)
         present(navController, animated: true)

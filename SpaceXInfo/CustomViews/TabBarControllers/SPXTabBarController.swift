@@ -16,7 +16,7 @@ class SPXTabBarController: UITabBarController {
     }
     
     func createHomeVC() -> UINavigationController {
-        let homeVC = HomeVC()
+        let homeVC = HomeViewController()
         homeVC.title = "Home"
         homeVC.tabBarItem = UITabBarItem(title: "Home", image: SFSymbols.home, tag: 0)
         
@@ -24,7 +24,7 @@ class SPXTabBarController: UITabBarController {
     }
     
     func createUpcomingLaunchesVC() -> UINavigationController {
-        let upcomingLaunchesVC = UpcomingLaunchesVC()
+        let upcomingLaunchesVC = UpcomingLaunchesViewController()
         upcomingLaunchesVC.title = "Upcoming Launches"
         upcomingLaunchesVC.tabBarItem = UITabBarItem(title: "Upcoming", image: SFSymbols.upcoming, tag: 1)
         
@@ -32,7 +32,7 @@ class SPXTabBarController: UITabBarController {
     }
     
     func createRocketsVC() -> UINavigationController{
-        let rocketsVC = RocketsVC()
+        let rocketsVC = RocketsViewController()
         rocketsVC.title = "Rockets"
         rocketsVC.tabBarItem = UITabBarItem(title: "Rockets", image: SFSymbols.rocket, tag: 2)
         

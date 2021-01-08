@@ -14,30 +14,24 @@ class SPXNextLaunchView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    }
-    
-    init(withStringDate launchDate: String) {
-        super.init(frame: .zero)
         
-        dateLabel.text = launchDate
-        configure()
         configureNextLaunchCard()
+        configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateUI(withDateString launchDate: String) {
+        dateLabel.text = launchDate
+    }
+    
     private func configureNextLaunchCard() {
+        turnIntoCard(view: self)
+        
         titleLabel.text = "Next Launch in"
         titleLabel.textColor = .systemIndigo
-        
-        backgroundColor = .secondarySystemBackground
-        layer.cornerRadius = 18
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        layer.shadowRadius = 8.0
-        layer.shadowOpacity = 0.7
     }
     
     private func configure() {

@@ -9,7 +9,7 @@ import UIKit
 
 class SPXLatestLaunchView: UIView {
     
-    var launch: Launch!
+    //var launch: Launch!
     
     let titleLabel = SPXTitleLabel(textAlignment: .left, fontSize: 22)
     let patchImageView = SPXAvatarImageView(frame: .zero)
@@ -20,13 +20,7 @@ class SPXLatestLaunchView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    }
-    
-    init(launch: Launch) {
-        super.init(frame: .zero)
-        self.launch = launch
-        fillUIElements()
-        configureCard()
+        turnIntoCard(view: self)
         configureElementsPosition()
     }
     
@@ -34,7 +28,7 @@ class SPXLatestLaunchView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func fillUIElements() {
+    func updateUI(with launch: Launch) {
         titleLabel.text = "Latest launch"
         titleLabel.textColor = .systemIndigo
         nameLabel.text = launch.missionName
@@ -53,15 +47,6 @@ class SPXLatestLaunchView: UIView {
         if let smallPatchURL = launch.smallPatchURL {
             patchImageView.downloadImage(fromURL: smallPatchURL)
         }
-    }
-    
-    private func configureCard() {
-        backgroundColor = .secondarySystemBackground
-        layer.cornerRadius = 18
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        layer.shadowRadius = 8.0
-        layer.shadowOpacity = 0.7
     }
     
     private func configureElementsPosition() {

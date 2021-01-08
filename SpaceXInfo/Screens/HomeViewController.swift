@@ -1,5 +1,5 @@
 //
-//  HomeVC.swift
+//  HomeViewController.swift
 //  SpaceXInfo
 //
 //  Created by Gustavo Tiecker on 05/01/21.
@@ -7,16 +7,28 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
+class HomeViewController: UIViewController {
         
-    var latestLaunchView = SPXLatestLaunchView()
-    var nextLaunchView = SPXNextLaunchView()
+    private lazy var latestLaunchView: SPXLatestLaunchView = {
+        let view = SPXLatestLaunchView()
+        return view
+    }()
+    
+    private lazy var nextLaunchView: SPXNextLaunchView = {
+        let view = SPXNextLaunchView()
+        return view
+    }()
         
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         getLatestLaunch()
         getNextLaunch()
+        
+        latestLaunchView.isHidden = true
+        nextLaunchView.isHidden = true
+        
+        configure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,13 +67,13 @@ class HomeVC: UIViewController {
     }
     
     private func updateLatestLaunchUI(with launch: Launch) {
-        latestLaunchView = SPXLatestLaunchView(launch: launch)
-        configure()
+        latestLaunchView.updateUI(with: launch)
+        latestLaunchView.isHidden = false
     }
     
     private func updateNextLaunchUI(with launch: Launch) {
-        nextLaunchView = SPXNextLaunchView(withStringDate: launch.date.convertToMonthDayYearTimeFormat())
-        configure()
+        nextLaunchView.updateUI(withDateString: launch.date.convertToMonthDayYearTimeFormat())
+        nextLaunchView.isHidden = false
     }
     
     private func configure() {

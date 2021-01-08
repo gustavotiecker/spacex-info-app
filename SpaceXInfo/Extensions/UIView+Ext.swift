@@ -23,4 +23,13 @@ extension UIView {
     func addSubviews(_ views: UIView...) {
         for view in views { addSubview(view) }
     }
+    
+    func turnIntoCard(view: UIView) {
+        view.backgroundColor = .secondarySystemBackground
+        view.layer.cornerRadius = 18
+        view.layer.shadowColor = UIColor.gray.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        view.layer.shadowRadius = 8.0
+        view.layer.shadowOpacity = 0.7
+    }
 }

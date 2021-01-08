@@ -1,5 +1,5 @@
 //
-//  UpcomingLaunchesVC.swift
+//  UpcomingLaunchesViewController.swift
 //  SpaceXInfo
 //
 //  Created by Gustavo Tiecker on 07/12/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UpcomingLaunchesVC: UIViewController {
+class UpcomingLaunchesViewController: UIViewController {
     
     let tableView = UITableView()
     var upcomingLaunches: [Launch] = []
@@ -56,7 +56,7 @@ class UpcomingLaunchesVC: UIViewController {
     }
 }
 
-extension UpcomingLaunchesVC: UITableViewDataSource, UITableViewDelegate {
+extension UpcomingLaunchesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return upcomingLaunches.count
