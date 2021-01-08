@@ -15,6 +15,7 @@ struct Launch {
     let rocketID: String?
     let smallPatchURL: URL?
     let largePatchURL: URL?
+    let success: Bool?
 }
 
 extension Launch: Decodable {
@@ -24,6 +25,7 @@ extension Launch: Decodable {
         case missionDetails = "details"
         case date = "date_utc"
         case rocketID = "rocket"
+        case success = "success"
         case links
 
         enum LinksKeys: String, CodingKey {
@@ -43,6 +45,7 @@ extension Launch: Decodable {
         missionDetails = try container.decodeIfPresent(String.self, forKey: .missionDetails)
         date = try container.decode(Date.self, forKey: .date)
         rocketID = try container.decode(String.self, forKey: .rocketID)
+        success = try container.decodeIfPresent(Bool.self, forKey: .success)
 
         let linksContainer = try container.nestedContainer(keyedBy: LaunchKeys.LinksKeys.self, forKey: .links)
         let patchContainer = try linksContainer.nestedContainer(keyedBy: LaunchKeys.LinksKeys.PatchKeys.self, forKey: .patch)

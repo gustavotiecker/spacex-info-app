@@ -8,18 +8,15 @@
 import UIKit
 
 class HomeVC: UIViewController {
-    
-    let logoImageView = UIImageView()
-    let nextLaunchView = SPXNextLaunchView(launchName: "Discover", withStringDate: "01 21, 2021 - 13:30:00")
-    let latestLaunchButton = SPXButton(backgroundColor: .systemIndigo, title: "Latest Launch")
-
+        
+    var latestLaunchView = SPXLatestLaunchView()
+    var nextLaunchView = SPXNextLaunchView()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        view.addSubviews(logoImageView, nextLaunchView, latestLaunchButton)
-        configureLogoImageView()
-        configureNextLaunchView()
-        configureLatestLaunchButton()
+        getLatestLaunch()
+        getNextLaunch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,35 +24,65 @@ class HomeVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    private func configureLogoImageView() {
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = Images.spaceXInfoLogo
-        
-        NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.heightAnchor.constraint(equalToConstant: 300),
-            logoImageView.widthAnchor.constraint(equalToConstant: 300)
-        ])
+    func getLatestLaunch() {
+        NetworkManager.shared.getLatestLaunch { [weak self] result in
+            guard let self = self else { return }
+            
+            switch(result) {
+            case .success(let launch):
+                DispatchQueue.main.async {
+                    self.updateLatestLaunchUI(with: launch)
+                }
+            case .failure(let error):
+                self.presentAlertOnTheMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
     }
     
-    private func configureNextLaunchView() {
-        nextLaunchView.translatesAutoresizingMaskIntoConstraints = false
+    func getNextLaunch() {
+        NetworkManager.shared.getNextLaunch { [weak self] result in
+            guard let self = self else { return }
+            
+            switch(result) {
+            case .success(let launch):
+                DispatchQueue.main.async {
+                    self.updateNextLaunchUI(with: launch)
+                }
+            case .failure(let error):
+                self.presentAlertOnTheMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
+    }
+    
+    private func updateLatestLaunchUI(with launch: Launch) {
+        latestLaunchView = SPXLatestLaunchView(launch: launch)
+        configure()
+    }
+    
+    private func updateNextLaunchUI(with launch: Launch) {
+        nextLaunchView = SPXNextLaunchView(withStringDate: launch.date.convertToMonthDayYearTimeFormat())
+        configure()
+    }
+    
+    private func configure() {
+        let cardViews = [latestLaunchView, nextLaunchView]
+        
+        for cardView in cardViews {
+            cardView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(cardView)
+            
+            NSLayoutConstraint.activate([
+                cardView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
+                cardView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
+            ])
+        }
         
         NSLayoutConstraint.activate([
-            nextLaunchView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 28),
-            nextLaunchView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
-            nextLaunchView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
+            latestLaunchView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            latestLaunchView.heightAnchor.constraint(equalToConstant: 360),
+            
+            nextLaunchView.topAnchor.constraint(equalTo: latestLaunchView.bottomAnchor, constant: 50),
             nextLaunchView.heightAnchor.constraint(equalToConstant: 150)
-        ])
-    }
-    
-    private func configureLatestLaunchButton() {
-        NSLayoutConstraint.activate([
-            latestLaunchButton.topAnchor.constraint(equalTo: nextLaunchView.bottomAnchor, constant: 28),
-            latestLaunchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
-            latestLaunchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
-            latestLaunchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

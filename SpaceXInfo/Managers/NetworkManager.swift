@@ -90,6 +90,82 @@ class NetworkManager {
         task.resume()
     }
     
+    func getLatestLaunch(completion: @escaping (Result<Launch, SPXError>) -> Void) {
+        let endpoint = baseURL + "/launches/latest"
+        
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(.invalidRequest))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            if let _ = error {
+                completion(.failure(.unableToComplete))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
+                let launch = try decoder.decode(Launch.self, from: data)
+                completion(.success(launch))
+            } catch {
+                completion(.failure(.invalidData))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func getNextLaunch(completion: @escaping (Result<Launch, SPXError>) -> Void) {
+        let endpoint = baseURL + "/launches/next"
+        
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(.invalidRequest))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            if let _ = error {
+                completion(.failure(.unableToComplete))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
+                let launch = try decoder.decode(Launch.self, from: data)
+                completion(.success(launch))
+            } catch {
+                completion(.failure(.invalidData))
+            }
+        }
+        
+        task.resume()
+    }
+    
     func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil,

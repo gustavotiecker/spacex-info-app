@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9331908625A7745E009071BD /* SPXLatestLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9331908525A7745E009071BD /* SPXLatestLaunchView.swift */; };
 		9346579C257A762E00392967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346579B257A762E00392967 /* AppDelegate.swift */; };
 		9346579E257A762E00392967 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346579D257A762E00392967 /* SceneDelegate.swift */; };
 		934657A5257A763200392967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 934657A4257A763200392967 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9331908525A7745E009071BD /* SPXLatestLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXLatestLaunchView.swift; sourceTree = "<group>"; };
 		93465798257A762E00392967 /* SpaceXInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9346579B257A762E00392967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9346579D257A762E00392967 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				93ADF55F25914CC40039B104 /* SPXRocketSpecItem.swift */,
 				93A33A8925801E0100DD4A3C /* SPXAlertContainerView.swift */,
 				93C8569E25A65CF100C69E8F /* SPXNextLaunchView.swift */,
+				9331908525A7745E009071BD /* SPXLatestLaunchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				93A33A60257ED6A000DD4A3C /* LatestLaunchesVC.swift in Sources */,
 				93F9592925A4FAD3004690DB /* HomeVC.swift in Sources */,
 				93C7D6AB258B992800293A2F /* RocketInfoVC.swift in Sources */,
+				9331908625A7745E009071BD /* SPXLatestLaunchView.swift in Sources */,
 				9395082125815E6A00B40C62 /* UIViewController+Ext.swift in Sources */,
 				935038CB258AF01B0052EBBD /* UITableView+Ext.swift in Sources */,
 				9346579E257A762E00392967 /* SceneDelegate.swift in Sources */,
