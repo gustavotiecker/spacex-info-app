@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930F620925AE25490095286C /* SPXUpcomingLaunchInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F620825AE25490095286C /* SPXUpcomingLaunchInfoView.swift */; };
+		930F620C25AE29E00095286C /* LaunchInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F620B25AE29DF0095286C /* LaunchInfoViewController.swift */; };
 		9331908625A7745E009071BD /* SPXLatestLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9331908525A7745E009071BD /* SPXLatestLaunchView.swift */; };
 		9346579C257A762E00392967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346579B257A762E00392967 /* AppDelegate.swift */; };
 		9346579E257A762E00392967 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346579D257A762E00392967 /* SceneDelegate.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		930F620825AE25490095286C /* SPXUpcomingLaunchInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXUpcomingLaunchInfoView.swift; sourceTree = "<group>"; };
+		930F620B25AE29DF0095286C /* LaunchInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInfoViewController.swift; sourceTree = "<group>"; };
 		9331908525A7745E009071BD /* SPXLatestLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXLatestLaunchView.swift; sourceTree = "<group>"; };
 		93465798257A762E00392967 /* SpaceXInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9346579B257A762E00392967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +99,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		930F620325AD454A0095286C /* RocketViews */ = {
+			isa = PBXGroup;
+			children = (
+				93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */,
+				93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */,
+				93ADF55F25914CC40039B104 /* SPXRocketSpecItem.swift */,
+			);
+			path = RocketViews;
+			sourceTree = "<group>";
+		};
+		930F620425AD45620095286C /* LaunchViews */ = {
+			isa = PBXGroup;
+			children = (
+				93C8569E25A65CF100C69E8F /* SPXNextLaunchView.swift */,
+				9331908525A7745E009071BD /* SPXLatestLaunchView.swift */,
+				930F620825AE25490095286C /* SPXUpcomingLaunchInfoView.swift */,
+			);
+			path = LaunchViews;
+			sourceTree = "<group>";
+		};
+		930F620525AD45740095286C /* SupportViews */ = {
+			isa = PBXGroup;
+			children = (
+				93A33A8925801E0100DD4A3C /* SPXAlertContainerView.swift */,
+			);
+			path = SupportViews;
+			sourceTree = "<group>";
+		};
 		9346578F257A762D00392967 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +182,7 @@
 				93A33A62257ED7D200DD4A3C /* RocketsViewController.swift */,
 				93C7D6AA258B992800293A2F /* RocketInfoViewController.swift */,
 				93F9592825A4FAD3004690DB /* HomeViewController.swift */,
+				930F620B25AE29DF0095286C /* LaunchInfoViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -231,12 +264,9 @@
 		93A33A8825801DCF00DD4A3C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				93C7D6C2258D183800293A2F /* SPXRocketInfoHeaderView.swift */,
-				93C7D6C5258D53CF00293A2F /* SPXRocketSpecsView.swift */,
-				93ADF55F25914CC40039B104 /* SPXRocketSpecItem.swift */,
-				93A33A8925801E0100DD4A3C /* SPXAlertContainerView.swift */,
-				93C8569E25A65CF100C69E8F /* SPXNextLaunchView.swift */,
-				9331908525A7745E009071BD /* SPXLatestLaunchView.swift */,
+				930F620525AD45740095286C /* SupportViews */,
+				930F620425AD45620095286C /* LaunchViews */,
+				930F620325AD454A0095286C /* RocketViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,6 +369,7 @@
 				9346579C257A762E00392967 /* AppDelegate.swift in Sources */,
 				93C7D6B1258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift in Sources */,
 				93C7D6C6258D53CF00293A2F /* SPXRocketSpecsView.swift in Sources */,
+				930F620C25AE29E00095286C /* LaunchInfoViewController.swift in Sources */,
 				93A33A6F257FB80F00DD4A3C /* SPXAvatarImageView.swift in Sources */,
 				93A33A8A25801E0100DD4A3C /* SPXAlertContainerView.swift in Sources */,
 				93C7D6C3258D183800293A2F /* SPXRocketInfoHeaderView.swift in Sources */,
@@ -354,6 +385,7 @@
 				93A33A6B257FB55B00DD4A3C /* LaunchCell.swift in Sources */,
 				93A33A7B257FC09D00DD4A3C /* SPXBodyLabel.swift in Sources */,
 				93A33A63257ED7D200DD4A3C /* RocketsViewController.swift in Sources */,
+				930F620925AE25490095286C /* SPXUpcomingLaunchInfoView.swift in Sources */,
 				93A33A8525800A4D00DD4A3C /* Launch.swift in Sources */,
 				93A33A78257FBD6E00DD4A3C /* SPXTitleLabel.swift in Sources */,
 				93A33A73257FB83F00DD4A3C /* Constants.swift in Sources */,

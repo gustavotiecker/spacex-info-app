@@ -13,7 +13,7 @@ class RocketInfoViewController: UIViewController {
     
     init(rocket: Rocket) {
         super.init(nibName: nil, bundle: nil)
-        self.rocket = rocket;
+        self.rocket = rocket
     }
     
     required init?(coder: NSCoder) {
@@ -29,7 +29,7 @@ class RocketInfoViewController: UIViewController {
     
     func configureViewController() {
         view.backgroundColor = .systemBackground
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
         navigationItem.rightBarButtonItem = doneButton
     }
     
@@ -67,7 +67,7 @@ class RocketInfoViewController: UIViewController {
         childVC.didMove(toParent: self)
     }
     
-    @objc func dismissVC() {
+    @objc func dismissViewController() {
         dismiss(animated: true)
     }
 }

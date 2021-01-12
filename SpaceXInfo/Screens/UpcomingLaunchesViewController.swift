@@ -70,5 +70,11 @@ extension UpcomingLaunchesViewController: UITableViewDataSource, UITableViewDele
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let launch = upcomingLaunches[indexPath.row]
+        let destVC = LaunchInfoViewController(launch: launch)
+        let navController = UINavigationController(rootViewController: destVC)
+        
+        present(navController, animated: true)
+    }
 }
