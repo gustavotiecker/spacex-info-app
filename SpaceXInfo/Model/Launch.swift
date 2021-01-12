@@ -15,6 +15,7 @@ struct Launch {
     let rocketID: String?
     let smallPatchURL: URL?
     let largePatchURL: URL?
+    let campaignURL: URL?
     let success: Bool?
 }
 
@@ -30,10 +31,15 @@ extension Launch: Decodable {
 
         enum LinksKeys: String, CodingKey {
             case patch = "patch"
+            case reddit = "reddit"
 
             enum PatchKeys: String, CodingKey {
                 case smallPatch = "small"
                 case largePatch = "large"
+            }
+            
+            enum RedditKeys: String, CodingKey {
+                case campaign = "campaign"
             }
         }
     }
@@ -49,8 +55,11 @@ extension Launch: Decodable {
 
         let linksContainer = try container.nestedContainer(keyedBy: LaunchKeys.LinksKeys.self, forKey: .links)
         let patchContainer = try linksContainer.nestedContainer(keyedBy: LaunchKeys.LinksKeys.PatchKeys.self, forKey: .patch)
+        let redditContainer = try linksContainer.nestedContainer(keyedBy: LaunchKeys.LinksKeys.RedditKeys.self, forKey: .reddit)
         
         smallPatchURL = try patchContainer.decodeIfPresent(URL.self, forKey: .smallPatch)
         largePatchURL = try patchContainer.decodeIfPresent(URL.self, forKey: .largePatch)
+        
+        campaignURL = try redditContainer.decodeIfPresent(URL.self, forKey: .campaign)
     }
 }

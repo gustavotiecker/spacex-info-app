@@ -8,9 +8,11 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    var latestLaunch: Launch?
         
     private lazy var latestLaunchView: SPXLatestLaunchView = {
-        let view = SPXLatestLaunchView()
+        let view = SPXLatestLaunchView(delegate: self)
         return view
     }()
     
@@ -45,6 +47,7 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.updateLatestLaunchUI(with: launch)
                 }
+                self.latestLaunch = launch
             case .failure(let error):
                 self.presentAlertOnTheMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
             }
@@ -96,5 +99,14 @@ class HomeViewController: UIViewController {
             nextLaunchView.topAnchor.constraint(equalTo: latestLaunchView.bottomAnchor, constant: 50),
             nextLaunchView.heightAnchor.constraint(equalToConstant: 150)
         ])
+    }
+}
+
+extension HomeViewController: SPXLatestLaunchDelegate {
+    
+    func didTapRedditButton() {
+        if let launch = latestLaunch {
+            presentSafariVC(with: launch.campaignURL!)
+        }
     }
 }

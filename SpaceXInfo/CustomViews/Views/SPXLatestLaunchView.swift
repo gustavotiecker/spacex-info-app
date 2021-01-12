@@ -7,21 +7,28 @@
 
 import UIKit
 
+protocol SPXLatestLaunchDelegate: class {
+    func didTapRedditButton()
+}
+
 class SPXLatestLaunchView: UIView {
     
-    //var launch: Launch!
+    weak var delegate: SPXLatestLaunchDelegate!
     
     let titleLabel = SPXTitleLabel(textAlignment: .left, fontSize: 22)
     let patchImageView = SPXAvatarImageView(frame: .zero)
     let nameLabel = SPXTitleLabel(textAlignment: .center, fontSize: 16)
     let successLabel = SPXSecondaryTitleLabel(fontSize: 12)
     let dateLabel = SPXSecondaryTitleLabel(fontSize: 18)
-    let callToActionButton = SPXButton(backgroundColor: .systemIndigo, title: "Discussion page")
+    let redditButton = SPXButton(backgroundColor: .systemIndigo, title: "Campaign page")
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(delegate: SPXLatestLaunchDelegate) {
+        super.init(frame: .zero)
+        self.delegate = delegate
+        
         turnIntoCard(view: self)
         configureElementsPosition()
+        configureRedditButton()
     }
     
     required init?(coder: NSCoder) {
@@ -50,7 +57,7 @@ class SPXLatestLaunchView: UIView {
     }
     
     private func configureElementsPosition() {
-        addSubviews(titleLabel, patchImageView, nameLabel, successLabel, dateLabel, callToActionButton)
+        addSubviews(titleLabel, patchImageView, nameLabel, successLabel, dateLabel, redditButton)
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
@@ -75,10 +82,18 @@ class SPXLatestLaunchView: UIView {
             dateLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             dateLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            callToActionButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20),
-            callToActionButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            callToActionButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            callToActionButton.heightAnchor.constraint(equalToConstant: 50)
+            redditButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20),
+            redditButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            redditButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            redditButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    private func configureRedditButton() {
+        redditButton.addTarget(self, action: #selector(redditButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func redditButtonTapped() {
+        delegate.didTapRedditButton()
     }
 }
