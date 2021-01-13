@@ -2,9 +2,17 @@
 
 My first personal project, an app with information about SpaceX rockets and launches, built using the SpaceX-API.
 
-## Screens of the app
+## Home Screen
 
-![](readmeGIFs/homescreen.gif) | ![](readmeGIFs/rocketscreen.gif) | ![](readmeGIFs/launchesscreen.gif)
+![](readmeGIFs/homescreen.gif)
+
+## Rockets Screen
+
+![](readmeGIFs/rocketscreen.gif)
+
+## Launches Screen
+
+![](readmeGIFs/launchesscreen.gif)
 
 ## Getting Started
 
