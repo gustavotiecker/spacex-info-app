@@ -33,7 +33,7 @@ class LaunchInfoViewController: UIViewController {
     }
     
     private func layoutUI() {
-        let upcomingLaunchInfoView = SPXUpcomingLaunchInfoView(launch: launch)
+        let upcomingLaunchInfoView = SPXUpcomingLaunchInfoView(launch: launch, delegate: self)
         view.addSubview(upcomingLaunchInfoView)
         upcomingLaunchInfoView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -47,5 +47,14 @@ class LaunchInfoViewController: UIViewController {
     
     @objc func dismissViewController() {
         dismiss(animated: true)
+    }
+}
+
+extension LaunchInfoViewController: SPXUpcomingLaunchDelegate {
+    
+    func didTapRedditButton(for launch: Launch) {
+        if let campaignURL = launch.campaignURL {
+            presentSafariVC(with: campaignURL)
+        }
     }
 }

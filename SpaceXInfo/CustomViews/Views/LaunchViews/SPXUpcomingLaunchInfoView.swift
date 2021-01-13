@@ -7,21 +7,30 @@
 
 import UIKit
 
+protocol SPXUpcomingLaunchDelegate: class {
+    func didTapRedditButton(for launch: Launch)
+}
+
 class SPXUpcomingLaunchInfoView: UIView {
     
-    let patchImageView = SPXAvatarImageView(frame: .zero)
-    let nameLabel = SPXTitleLabel(textAlignment: .center, fontSize: 34)
-    let dateLabel = SPXSecondaryTitleLabel(fontSize: 18)
-    let detailsLabel = SPXBodyLabel(textAlignment: .left)
+    weak var delegate: SPXUpcomingLaunchDelegate!
     
-    let padding: CGFloat = 8
+    let patchImageView = SPXAvatarImageView(frame: .zero)
+    let nameLabel = SPXTitleLabel(textAlignment: .center, fontSize: 32)
+    let detailsLabel = SPXBodyLabel(textAlignment: .left)
+    let dateLabel = SPXSecondaryTitleLabel(fontSize: 20)
+    let redditButton = SPXButton(backgroundColor: .systemIndigo, title: "Campaign page")
+    
+    let padding: CGFloat = 12
     let imagePadding: CGFloat = 36
+    let imageTextPadding: CGFloat = 18
     
     var launch: Launch!
     
-    init(launch: Launch) {
+    init(launch: Launch, delegate: SPXUpcomingLaunchDelegate) {
         super.init(frame: .zero)
         self.launch = launch
+        self.delegate = delegate
         configure()
     }
     
@@ -30,8 +39,12 @@ class SPXUpcomingLaunchInfoView: UIView {
     }
     
     private func configure() {
-        addSubviews(patchImageView)
+        addSubviews(patchImageView, nameLabel, detailsLabel, dateLabel, redditButton)
         configurePatchImageView()
+        configureNameLabel()
+        configureDetailsLabel()
+        configureDateLabel()
+        configureRedditButton()
     }
     
     private func configurePatchImageView() {
@@ -45,5 +58,52 @@ class SPXUpcomingLaunchInfoView: UIView {
             patchImageView.widthAnchor.constraint(equalToConstant: 120),
             patchImageView.heightAnchor.constraint(equalToConstant: 120),
         ])
+    }
+    
+    private func configureNameLabel() {
+        nameLabel.text = launch.missionName
+        
+        NSLayoutConstraint.activate([
+            nameLabel.topAnchor.constraint(equalTo: patchImageView.bottomAnchor, constant: imageTextPadding),
+            nameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            nameLabel.heightAnchor.constraint(equalToConstant: 34)
+        ])
+    }
+    
+    private func configureDateLabel() {
+        dateLabel.text = launch.date.convertToMonthDayYearTimeFormat()
+        
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: padding * 2),
+            dateLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            dateLabel.heightAnchor.constraint(equalToConstant: 22)
+        ])
+    }
+    
+    private func configureRedditButton() {
+        redditButton.addTarget(self, action: #selector(redditButtonTapped), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            redditButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: padding * 2),
+            redditButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            redditButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            redditButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    private func configureDetailsLabel() {
+        detailsLabel.text = launch.missionDetails
+        detailsLabel.numberOfLines = 9
+        
+        NSLayoutConstraint.activate([
+            detailsLabel.topAnchor.constraint(equalTo: redditButton.bottomAnchor, constant: padding),
+            detailsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+            detailsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            detailsLabel.heightAnchor.constraint(equalToConstant: 180),
+        ])
+    }
+    
+    @objc func redditButtonTapped() {
+        delegate.didTapRedditButton(for: launch)
     }
 }
