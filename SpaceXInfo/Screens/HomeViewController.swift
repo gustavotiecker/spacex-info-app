@@ -49,7 +49,7 @@ class HomeViewController: UIViewController {
                 }
                 self.latestLaunch = launch
             case .failure(let error):
-                self.presentAlertOnTheMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
+                self.presentAlert(title: "Error", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }
@@ -64,7 +64,7 @@ class HomeViewController: UIViewController {
                     self.updateNextLaunchUI(with: launch)
                 }
             case .failure(let error):
-                self.presentAlertOnTheMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
+                self.presentAlert(title: "Error", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }

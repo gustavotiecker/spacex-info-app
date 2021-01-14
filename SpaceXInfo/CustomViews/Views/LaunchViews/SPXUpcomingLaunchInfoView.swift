@@ -85,8 +85,8 @@ class SPXUpcomingLaunchInfoView: UIView {
         
         NSLayoutConstraint.activate([
             redditButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: padding * 2),
-            redditButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            redditButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            redditButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            redditButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
             redditButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }

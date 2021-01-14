@@ -12,6 +12,8 @@ class SPXNextLaunchView: UIView {
     let titleLabel = SPXTitleLabel(textAlignment: .left, fontSize: 22)
     let dateLabel = SPXTitleLabel(textAlignment: .center, fontSize: 22)
     
+    let padding: CGFloat = 30
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -39,11 +41,11 @@ class SPXNextLaunchView: UIView {
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             titleLabel.heightAnchor.constraint(equalToConstant: 40),
             
-            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
+            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding),
             dateLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             dateLabel.heightAnchor.constraint(equalToConstant: 24),
         ])

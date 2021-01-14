@@ -101,8 +101,8 @@ class SPXRocketSpecsView: UIView {
         
         NSLayoutConstraint.activate([
             wikipediaButton.topAnchor.constraint(equalTo: diameterItem.bottomAnchor, constant: 48),
-            wikipediaButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            wikipediaButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            wikipediaButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            wikipediaButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
             wikipediaButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }

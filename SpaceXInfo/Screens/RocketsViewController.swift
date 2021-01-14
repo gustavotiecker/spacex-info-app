@@ -45,7 +45,7 @@ class RocketsViewController: UIViewController {
             case .success(let rockets):
                 self.updateUI(with: rockets)
             case .failure(let error):
-                self.presentAlertOnTheMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
+                self.presentAlert(title: "Error", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }

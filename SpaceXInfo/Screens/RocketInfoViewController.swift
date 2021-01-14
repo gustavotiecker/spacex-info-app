@@ -24,7 +24,6 @@ class RocketInfoViewController: UIViewController {
         super.viewDidLoad()
         configureViewController()
         layoutUI()
-        //configureUIElements()
     }
     
     func configureViewController() {
@@ -32,10 +31,6 @@ class RocketInfoViewController: UIViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
         navigationItem.rightBarButtonItem = doneButton
     }
-    
-//    func configureUIElements() {
-//        self.add(childVC: SPXRocketInfoHeaderVC(rocket: rocket), to: self.headerView)
-//    }
     
     func layoutUI() {
         let headerView = SPXRocketInfoHeaderView(rocket: rocket)
@@ -58,13 +53,6 @@ class RocketInfoViewController: UIViewController {
             rocketSpecsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
             rocketSpecsView.heightAnchor.constraint(equalToConstant: 260)
         ])
-    }
-    
-    func add(childVC: UIViewController, to containerView: UIView) {
-        addChild(childVC)
-        containerView.addSubview(childVC.view)
-        childVC.view.frame = containerView.bounds
-        childVC.didMove(toParent: self)
     }
     
     @objc func dismissViewController() {

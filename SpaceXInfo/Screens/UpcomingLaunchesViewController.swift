@@ -45,7 +45,7 @@ class UpcomingLaunchesViewController: UIViewController {
             case .success(let launches):
                 self.updateUI(with: launches)
             case .failure(let error):
-                self.presentAlertOnTheMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
+                self.presentAlert(title: "Error", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }
