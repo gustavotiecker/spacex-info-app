@@ -18,6 +18,7 @@
 		935038D2258AF1800052EBBD /* RocketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935038D1258AF1800052EBBD /* RocketCell.swift */; };
 		9360D27625883290000690E0 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9360D27525883290000690E0 /* Date+Ext.swift */; };
 		9360D2792588F8CC000690E0 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9360D2782588F8CC000690E0 /* Rocket.swift */; };
+		9384E69E25D3693200289A55 /* ObjectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9384E69D25D3693200289A55 /* ObjectDataSource.swift */; };
 		9395082125815E6A00B40C62 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395082025815E6A00B40C62 /* UIViewController+Ext.swift */; };
 		939508262584163400B40C62 /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939508252584163400B40C62 /* DateFormatter+Ext.swift */; };
 		93A33A5D257ED66300DD4A3C /* UpcomingLaunchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A5C257ED66300DD4A3C /* UpcomingLaunchesViewController.swift */; };
@@ -58,6 +59,7 @@
 		935038D1258AF1800052EBBD /* RocketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCell.swift; sourceTree = "<group>"; };
 		9360D27525883290000690E0 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		9360D2782588F8CC000690E0 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
+		9384E69D25D3693200289A55 /* ObjectDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDataSource.swift; sourceTree = "<group>"; };
 		9395082025815E6A00B40C62 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		939508252584163400B40C62 /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
 		93A33A5C257ED66300DD4A3C /* UpcomingLaunchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingLaunchesViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		9346579A257A762E00392967 /* SpaceXInfo */ = {
 			isa = PBXGroup;
 			children = (
+				9384E69C25D3690F00289A55 /* DataSource */,
 				9395081F25815E5100B40C62 /* Extensions */,
 				93A33A8325800A2100DD4A3C /* Model */,
 				93A33A7F2580096800DD4A3C /* Managers */,
@@ -181,6 +184,14 @@
 				930F620B25AE29DF0095286C /* LaunchInfoViewController.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		9384E69C25D3690F00289A55 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				9384E69D25D3693200289A55 /* ObjectDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		9395081F25815E5100B40C62 /* Extensions */ = {
@@ -356,6 +367,7 @@
 				93C8569F25A65CF100C69E8F /* SPXNextLaunchView.swift in Sources */,
 				93A33A812580097E00DD4A3C /* NetworkManager.swift in Sources */,
 				93A33A972580237500DD4A3C /* SPXError.swift in Sources */,
+				9384E69E25D3693200289A55 /* ObjectDataSource.swift in Sources */,
 				93A33A5D257ED66300DD4A3C /* UpcomingLaunchesViewController.swift in Sources */,
 				93C7D6BB258C410800293A2F /* UIView+Ext.swift in Sources */,
 				939508262584163400B40C62 /* DateFormatter+Ext.swift in Sources */,

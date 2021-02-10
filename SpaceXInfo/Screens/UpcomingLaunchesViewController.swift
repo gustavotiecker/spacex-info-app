@@ -10,7 +10,8 @@ import UIKit
 class UpcomingLaunchesViewController: UIViewController {
     
     let tableView = UITableView()
-    var upcomingLaunches: [Launch] = []
+    var dataSource = ObjectDataSource()
+    // var upcomingLaunches: [Launch] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,8 @@ class UpcomingLaunchesViewController: UIViewController {
         
         tableView.frame = view.bounds
         tableView.rowHeight = 80
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate = dataSource
+        tableView.dataSource = dataSource
         tableView.removeExcessCells()
         
         tableView.register(LaunchCell.self, forCellReuseIdentifier: LaunchCell.reuseID)
@@ -51,30 +52,30 @@ class UpcomingLaunchesViewController: UIViewController {
     }
     
     func updateUI(with launches: [Launch]) {
-        self.upcomingLaunches = launches
+        self.dataSource.upcomingLaunches = launches
         tableView.reloadDataOnMainThread()
     }
 }
 
-extension UpcomingLaunchesViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return upcomingLaunches.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: LaunchCell.reuseID) as! LaunchCell
-        let launch = upcomingLaunches[indexPath.row]
-        
-        cell.set(launch: launch)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let launch = upcomingLaunches[indexPath.row]
-        let destVC = LaunchInfoViewController(launch: launch)
-        let navController = UINavigationController(rootViewController: destVC)
-        
-        present(navController, animated: true)
-    }
-}
+//extension UpcomingLaunchesViewController: UITableViewDelegate {
+//    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return upcomingLaunches.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: LaunchCell.reuseID) as! LaunchCell
+//        let launch = upcomingLaunches[indexPath.row]
+//
+//        cell.set(launch: launch)
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let launch = upcomingLaunches[indexPath.row]
+//        let destVC = LaunchInfoViewController(launch: launch)
+//        let navController = UINavigationController(rootViewController: destVC)
+//
+//        present(navController, animated: true)
+//    }
+//}
