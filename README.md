@@ -8,7 +8,7 @@ My first personal project, an app with information about SpaceX rockets and laun
 
 ## Rockets Screen
 
-![](readmeGIFs/rocketscreen.gif)
+![](readmeGIFs/rocketsscreen.gif)
 
 ## Launches Screen
 
