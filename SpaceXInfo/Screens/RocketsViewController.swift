@@ -10,7 +10,7 @@ import UIKit
 class RocketsViewController: UIViewController {
     
     let tableView = UITableView()
-    var rockets: [Rocket] = []
+    var dataSource = RocketsDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +30,19 @@ class RocketsViewController: UIViewController {
         
         tableView.frame = view.bounds
         tableView.rowHeight = 80
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate = dataSource
+        tableView.dataSource = dataSource
         tableView.removeExcessCells()
+        
+        dataSource.selectedItemAtIndex { [weak self] indexPath in
+            guard let self = self else { return }
+            
+            let rocket = self.dataSource.rockets[indexPath.row]
+            let destVC = RocketInfoViewController(rocket: rocket)
+            let navController = UINavigationController(rootViewController: destVC)
+            
+            self.present(navController, animated: true)
+        }
         
         tableView.register(RocketCell.self, forCellReuseIdentifier: RocketCell.reuseID)
     }
@@ -51,31 +61,7 @@ class RocketsViewController: UIViewController {
     }
     
     func updateUI(with rockets: [Rocket]) {
-        self.rockets = rockets
+        self.dataSource.rockets = rockets
         tableView.reloadDataOnMainThread()
-    }
-}
-
-extension RocketsViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rockets.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: RocketCell.reuseID) as! RocketCell
-        let rocket = rockets[indexPath.row]
-        
-        cell.set(rocket: rocket)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let rocket = rockets[indexPath.row]
-        
-        let destVC = RocketInfoViewController(rocket: rocket)
-        
-        let navController = UINavigationController(rootViewController: destVC)
-        present(navController, animated: true)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930B02B025F17E6100FB7915 /* RocketsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B02AF25F17E6100FB7915 /* RocketsDataSource.swift */; };
 		930F620925AE25490095286C /* SPXUpcomingLaunchInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F620825AE25490095286C /* SPXUpcomingLaunchInfoView.swift */; };
 		930F620C25AE29E00095286C /* LaunchInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F620B25AE29DF0095286C /* LaunchInfoViewController.swift */; };
 		9331908625A7745E009071BD /* SPXLatestLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9331908525A7745E009071BD /* SPXLatestLaunchView.swift */; };
@@ -18,7 +19,7 @@
 		935038D2258AF1800052EBBD /* RocketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935038D1258AF1800052EBBD /* RocketCell.swift */; };
 		9360D27625883290000690E0 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9360D27525883290000690E0 /* Date+Ext.swift */; };
 		9360D2792588F8CC000690E0 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9360D2782588F8CC000690E0 /* Rocket.swift */; };
-		9384E69E25D3693200289A55 /* ObjectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9384E69D25D3693200289A55 /* ObjectDataSource.swift */; };
+		9384E69E25D3693200289A55 /* LaunchesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9384E69D25D3693200289A55 /* LaunchesDataSource.swift */; };
 		9395082125815E6A00B40C62 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395082025815E6A00B40C62 /* UIViewController+Ext.swift */; };
 		939508262584163400B40C62 /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939508252584163400B40C62 /* DateFormatter+Ext.swift */; };
 		93A33A5D257ED66300DD4A3C /* UpcomingLaunchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A5C257ED66300DD4A3C /* UpcomingLaunchesViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		930B02AF25F17E6100FB7915 /* RocketsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsDataSource.swift; sourceTree = "<group>"; };
 		930F620825AE25490095286C /* SPXUpcomingLaunchInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXUpcomingLaunchInfoView.swift; sourceTree = "<group>"; };
 		930F620B25AE29DF0095286C /* LaunchInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInfoViewController.swift; sourceTree = "<group>"; };
 		9331908525A7745E009071BD /* SPXLatestLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXLatestLaunchView.swift; sourceTree = "<group>"; };
@@ -59,7 +61,7 @@
 		935038D1258AF1800052EBBD /* RocketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCell.swift; sourceTree = "<group>"; };
 		9360D27525883290000690E0 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		9360D2782588F8CC000690E0 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
-		9384E69D25D3693200289A55 /* ObjectDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDataSource.swift; sourceTree = "<group>"; };
+		9384E69D25D3693200289A55 /* LaunchesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesDataSource.swift; sourceTree = "<group>"; };
 		9395082025815E6A00B40C62 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		939508252584163400B40C62 /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
 		93A33A5C257ED66300DD4A3C /* UpcomingLaunchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingLaunchesViewController.swift; sourceTree = "<group>"; };
@@ -189,7 +191,8 @@
 		9384E69C25D3690F00289A55 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				9384E69D25D3693200289A55 /* ObjectDataSource.swift */,
+				9384E69D25D3693200289A55 /* LaunchesDataSource.swift */,
+				930B02AF25F17E6100FB7915 /* RocketsDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -367,7 +370,7 @@
 				93C8569F25A65CF100C69E8F /* SPXNextLaunchView.swift in Sources */,
 				93A33A812580097E00DD4A3C /* NetworkManager.swift in Sources */,
 				93A33A972580237500DD4A3C /* SPXError.swift in Sources */,
-				9384E69E25D3693200289A55 /* ObjectDataSource.swift in Sources */,
+				9384E69E25D3693200289A55 /* LaunchesDataSource.swift in Sources */,
 				93A33A5D257ED66300DD4A3C /* UpcomingLaunchesViewController.swift in Sources */,
 				93C7D6BB258C410800293A2F /* UIView+Ext.swift in Sources */,
 				939508262584163400B40C62 /* DateFormatter+Ext.swift in Sources */,
@@ -380,6 +383,7 @@
 				93C7D6C3258D183800293A2F /* SPXRocketInfoHeaderView.swift in Sources */,
 				93ADF56025914CC40039B104 /* SPXRocketSpecItem.swift in Sources */,
 				93F9592925A4FAD3004690DB /* HomeViewController.swift in Sources */,
+				930B02B025F17E6100FB7915 /* RocketsDataSource.swift in Sources */,
 				93C7D6AB258B992800293A2F /* RocketInfoViewController.swift in Sources */,
 				9331908625A7745E009071BD /* SPXLatestLaunchView.swift in Sources */,
 				9395082125815E6A00B40C62 /* UIViewController+Ext.swift in Sources */,

@@ -10,8 +10,7 @@ import UIKit
 class UpcomingLaunchesViewController: UIViewController {
     
     let tableView = UITableView()
-    var dataSource = ObjectDataSource()
-    // var upcomingLaunches: [Launch] = []
+    var dataSource = LaunchesDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +34,16 @@ class UpcomingLaunchesViewController: UIViewController {
         tableView.dataSource = dataSource
         tableView.removeExcessCells()
         
+        dataSource.selectedItemAtIndex { [weak self] indexPath in
+            guard let self = self else { return }
+            
+            let launch = self.dataSource.upcomingLaunches[indexPath.row]
+            let destVC = LaunchInfoViewController(launch: launch)
+            let navController = UINavigationController(rootViewController: destVC)
+
+            self.present(navController, animated: true)
+        }
+        
         tableView.register(LaunchCell.self, forCellReuseIdentifier: LaunchCell.reuseID)
     }
     
@@ -56,26 +65,3 @@ class UpcomingLaunchesViewController: UIViewController {
         tableView.reloadDataOnMainThread()
     }
 }
-
-//extension UpcomingLaunchesViewController: UITableViewDelegate {
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return upcomingLaunches.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: LaunchCell.reuseID) as! LaunchCell
-//        let launch = upcomingLaunches[indexPath.row]
-//
-//        cell.set(launch: launch)
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let launch = upcomingLaunches[indexPath.row]
-//        let destVC = LaunchInfoViewController(launch: launch)
-//        let navController = UINavigationController(rootViewController: destVC)
-//
-//        present(navController, animated: true)
-//    }
-//}

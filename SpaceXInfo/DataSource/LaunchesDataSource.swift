@@ -7,9 +7,14 @@
 
 import UIKit
 
-class ObjectDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
+class LaunchesDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     var upcomingLaunches: [Launch] = []
+    private var selectedCallback: ((IndexPath)->Void)?
+    
+    func selectedItemAtIndex(callback: @escaping (IndexPath) -> Void) {
+        selectedCallback = callback
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return upcomingLaunches.count
@@ -24,10 +29,8 @@ class ObjectDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let launch = upcomingLaunches[indexPath.row]
-        let destVC = LaunchInfoViewController(launch: launch)
-        let navController = UINavigationController(rootViewController: destVC)
-        
-        //present(navController, animated: true)
+        if let callback = selectedCallback {
+               callback(indexPath)
+        }
     }
 }
