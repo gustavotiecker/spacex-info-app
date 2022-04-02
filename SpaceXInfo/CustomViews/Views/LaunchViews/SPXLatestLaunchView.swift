@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SPXLatestLaunchDelegate: class {
+protocol SPXLatestLaunchDelegate: AnyObject {
     func didTapRedditButton()
 }
 

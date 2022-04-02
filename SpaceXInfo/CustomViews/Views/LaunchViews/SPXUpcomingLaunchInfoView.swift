@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SPXUpcomingLaunchDelegate: class {
+protocol SPXUpcomingLaunchDelegate: AnyObject {
     func didTapRedditButton(for launch: Launch)
 }
 

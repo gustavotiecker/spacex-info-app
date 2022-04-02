@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SPXItemDelegate: class {
+protocol SPXItemDelegate: AnyObject {
     func didTapWikipediaButton(for rocket: Rocket)
 }
 
