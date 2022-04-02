@@ -16,26 +16,28 @@ class SPXTabBarController: UITabBarController {
     }
     
     func createHomeVC() -> UINavigationController {
-        let homeVC = HomeViewController()
-        homeVC.title = "Home"
-        homeVC.tabBarItem = UITabBarItem(title: "Home", image: SFSymbols.home, tag: 0)
+        let viewController = HomeViewController()
+        viewController.title = "Home"
+        viewController.tabBarItem = UITabBarItem(title: "Home", image: SFSymbols.home, tag: 0)
         
-        return UINavigationController(rootViewController: homeVC)
+        return UINavigationController(rootViewController: viewController)
     }
     
     func createUpcomingLaunchesVC() -> UINavigationController {
-        let upcomingLaunchesVC = UpcomingLaunchesViewController()
-        upcomingLaunchesVC.title = "Upcoming Launches"
-        upcomingLaunchesVC.tabBarItem = UITabBarItem(title: "Upcoming", image: SFSymbols.upcoming, tag: 1)
+        let viewController = UpcomingLaunchesViewController()
+        viewController.title = "Upcoming Launches"
+        viewController.tabBarItem = UITabBarItem(title: "Upcoming", image: SFSymbols.upcoming, tag: 1)
         
-        return UINavigationController(rootViewController: upcomingLaunchesVC)
+        return UINavigationController(rootViewController: viewController)
     }
     
     func createRocketsVC() -> UINavigationController{
-        let rocketsVC = RocketsViewController()
-        rocketsVC.title = "Rockets"
-        rocketsVC.tabBarItem = UITabBarItem(title: "Rockets", image: SFSymbols.rocket, tag: 2)
+        let viewModel = RocketsViewModel()
+        let viewController = RocketsViewController(viewModel: viewModel)
+        viewModel.viewDelegate = viewController
+        viewController.title = "Rockets"
+        viewController.tabBarItem = UITabBarItem(title: "Rockets", image: SFSymbols.rocket, tag: 2)
         
-        return UINavigationController(rootViewController: rocketsVC)
+        return UINavigationController(rootViewController: viewController)
     }
 }

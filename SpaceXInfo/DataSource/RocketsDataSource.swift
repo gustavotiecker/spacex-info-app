@@ -10,7 +10,7 @@ import UIKit
 class RocketsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     var rockets: [Rocket] = []
-    private var selectedCallback: ((IndexPath)->Void)?
+    private var selectedCallback: ((IndexPath) -> Void)?
     
     func selectedItemAtIndex(callback: @escaping (IndexPath) -> Void) {
         selectedCallback = callback

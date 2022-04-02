@@ -7,6 +7,41 @@
 
 import UIKit
 
+enum HttpMethod: String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case delete = "DELETE"
+}
+
+enum EndPoint {
+    case upcomingLaunches
+    case rockets
+    
+    func getPath() -> String {
+        switch self {
+        case .upcomingLaunches:
+            return "/launches/upcoming"
+        case .rockets:
+            return "/rockets"
+        }
+    }
+    
+    func getHttpMethod() -> HttpMethod {
+        switch self {
+        case .upcomingLaunches, .rockets:
+            return .get
+        }
+    }
+}
+
+enum APIError: String, Error {
+    case invalidRequest = "Invalid request. Please try again."
+    case unableToComplete = "Unable to complete your request. Please check your internet connection."
+    case invalidResponse = "Invalid response from the server. Please try again."
+    case invalidData = "The data receveid from the server was invalid. Please try again."
+}
+
 class NetworkManager {
     
     static let shared = NetworkManager()
@@ -14,16 +49,14 @@ class NetworkManager {
     
     private init() {}
     
-    func getUpcomingLaunches(completion: @escaping (Result<[Launch], SPXError>) -> Void) {
-        let endpoint = baseURL + "/launches/upcoming"
+    func request(body: String = "", endPoint: EndPoint, completion: @escaping (Result<Data, APIError>) -> Void) {
         
-        guard let url = URL(string: endpoint) else {
+        guard let url = URL(string: baseURL + endPoint.getPath()) else {
             completion(.failure(.invalidRequest))
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let _ = error {
                 completion(.failure(.unableToComplete))
                 return
@@ -39,6 +72,36 @@ class NetworkManager {
                 return
             }
             
+            completion(.success(data))
+        }
+        task.resume()
+    }
+    
+    func getUpcomingLaunches(completion: @escaping (Result<[Launch], SPXError>) -> Void) {
+        let endpoint = baseURL + "/launches/upcoming"
+
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(.invalidRequest))
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+
+            if let _ = error {
+                completion(.failure(.unableToComplete))
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(.invalidData))
+                return
+            }
+
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
@@ -48,47 +111,47 @@ class NetworkManager {
                 completion(.failure(.invalidData))
             }
         }
-        
+
         task.resume()
     }
-    
-    func getRockets(completion: @escaping (Result<[Rocket], SPXError>) -> Void) {
-        let endpoint = baseURL + "/rockets"
-        
-        guard let url = URL(string: endpoint) else {
-            completion(.failure(.invalidRequest))
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            if let _ = error {
-                completion(.failure(.unableToComplete))
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completion(.failure(.invalidResponse))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(.invalidData))
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
-                let rockets = try decoder.decode([Rocket].self, from: data)
-                completion(.success(rockets))
-            } catch {
-                completion(.failure(.invalidData))
-            }
-        }
-        
-        task.resume()
-    }
+//
+//    func getRockets(completion: @escaping (Result<[Rocket], SPXError>) -> Void) {
+//        let endpoint = baseURL + "/rockets"
+//
+//        guard let url = URL(string: endpoint) else {
+//            completion(.failure(.invalidRequest))
+//            return
+//        }
+//
+//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+//
+//            if let _ = error {
+//                completion(.failure(.unableToComplete))
+//                return
+//            }
+//
+//            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//                completion(.failure(.invalidResponse))
+//                return
+//            }
+//
+//            guard let data = data else {
+//                completion(.failure(.invalidData))
+//                return
+//            }
+//
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
+//                let rockets = try decoder.decode([Rocket].self, from: data)
+//                completion(.success(rockets))
+//            } catch {
+//                completion(.failure(.invalidData))
+//            }
+//        }
+//
+//        task.resume()
+//    }
     
     func getLatestLaunch(completion: @escaping (Result<Launch, SPXError>) -> Void) {
         let endpoint = baseURL + "/launches/latest"
