@@ -9,11 +9,15 @@ import UIKit
 
 class RocketInfoViewController: UIViewController {
     
-    var rocket: Rocket!
+    private var rocket: Rocket
+    
+    private let headerView = SPXRocketInfoHeaderView()
+    private let rocketSpecsView = SPXRocketSpecsView()
+    
     
     init(rocket: Rocket) {
-        super.init(nibName: nil, bundle: nil)
         self.rocket = rocket
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -22,21 +26,31 @@ class RocketInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewController()
-        layoutUI()
+        setupViewController()
+        setupViewCode()
     }
     
-    func configureViewController() {
+    func setupViewController() {
         view.backgroundColor = .systemBackground
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
         navigationItem.rightBarButtonItem = doneButton
     }
     
-    func layoutUI() {
-        let headerView = SPXRocketInfoHeaderView(rocket: rocket)
-        let rocketSpecsView = SPXRocketSpecsView(rocket: rocket, delegate: self)
-        view.addSubviews(headerView, rocketSpecsView)
+    @objc func dismissViewController() {
+        dismiss(animated: true)
+    }
+}
+
+extension RocketInfoViewController: ViewCode {
+    
+    func setupComponents() {
+        headerView.setup(with: rocket)
+        rocketSpecsView.setup(with: rocket, delegate: self)
         
+        view.addSubviews(headerView, rocketSpecsView)
+    }
+    
+    func setupConstraints() {
         headerView.translatesAutoresizingMaskIntoConstraints = false
         rocketSpecsView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -44,19 +58,13 @@ class RocketInfoViewController: UIViewController {
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 320)
-        ])
-        
-        NSLayoutConstraint.activate([
+            headerView.heightAnchor.constraint(equalToConstant: 320),
+            
             rocketSpecsView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
             rocketSpecsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             rocketSpecsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
             rocketSpecsView.heightAnchor.constraint(equalToConstant: 260)
         ])
-    }
-    
-    @objc func dismissViewController() {
-        dismiss(animated: true)
     }
 }
 

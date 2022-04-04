@@ -13,68 +13,63 @@ protocol SPXItemDelegate: AnyObject {
 
 class SPXRocketSpecsView: UIView {
     
-    weak var delegate: SPXItemDelegate!
+    // MARK: - Properties
+    weak var delegate: SPXItemDelegate?
+    var rocket: Rocket?
     
+    // MARK: - UI Elements
     let companyLabel = SPXSecondaryTitleLabel(fontSize: 20)
     let countryLabel = SPXBodyLabel(textAlignment: .left)
-    
     let diameterItem = SPXRocketSpecItem()
     let heightItem = SPXRocketSpecItem()
     let massItem = SPXRocketSpecItem()
     var itemViews: [UIView] = []
-    
     let wikipediaButton = SPXButton(backgroundColor: .systemIndigo, title: "Wikipedia's page")
     
-    let padding: CGFloat = 12
-    
-    var rocket: Rocket!
-    
-    init(rocket: Rocket, delegate: SPXItemDelegate) {
+    init() {
         super.init(frame: .zero)
-        self.rocket = rocket
-        self.delegate = delegate
-        configure()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure() {
-        layer.cornerRadius = 18
-        backgroundColor = .secondarySystemBackground
-        
-        addSubviews(companyLabel, countryLabel, diameterItem, heightItem, massItem, wikipediaButton)
-        configureCompanyLabel()
-        configureCountryLabel()
-        configureSpecItems()
-        configureWikipediaButton()
+    func setup(with rocket: Rocket, delegate: SPXItemDelegate) {
+        self.rocket = rocket
+        self.delegate = delegate
+        setupViewCode()
     }
     
-    private func configureCompanyLabel() {
-        companyLabel.text = "Company: \(rocket.company)"
+    private func setupView() {
+        layer.cornerRadius = 18
+        backgroundColor = .secondarySystemBackground
+    }
+ 
+    @objc func wikipediaButtonTapped() {
+        guard let rocket = rocket else { return }
+        delegate?.didTapWikipediaButton(for: rocket)
+    }
+}
+
+extension SPXRocketSpecsView: ViewCode {
+    
+    func setupComponents() {
+        addSubviews(companyLabel, countryLabel, diameterItem, heightItem, massItem, wikipediaButton)
+    }
+    
+    func setupConstraints() {
+        let padding: CGFloat = 12
         
         NSLayoutConstraint.activate([
             companyLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
             companyLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             companyLabel.heightAnchor.constraint(equalToConstant: 22),
-        ])
-    }
-    
-    private func configureCountryLabel() {
-        countryLabel.text = "Country: \(rocket.country)"
-        
-        NSLayoutConstraint.activate([
+            
             countryLabel.topAnchor.constraint(equalTo: companyLabel.bottomAnchor, constant: padding),
             countryLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            countryLabel.heightAnchor.constraint(equalToConstant: 22)
+            countryLabel.heightAnchor.constraint(equalToConstant: 22),
         ])
-    }
-    
-    private func configureSpecItems() {
-        heightItem.set(itemInfoType: .height, withValue: rocket.height)
-        diameterItem.set(itemInfoType: .diameter, withValue: rocket.diameter)
-        massItem.set(itemInfoType: .mass, withValue: Float(rocket.mass))
         
         itemViews = [diameterItem, heightItem, massItem]
         
@@ -89,17 +84,9 @@ class SPXRocketSpecsView: UIView {
         
         NSLayoutConstraint.activate([
             diameterItem.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            
             heightItem.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-
             massItem.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-        ])
-    }
-    
-    private func configureWikipediaButton() {
-        wikipediaButton.addTarget(self, action: #selector(wikipediaButtonTapped), for: .touchUpInside)
-        
-        NSLayoutConstraint.activate([
+            
             wikipediaButton.topAnchor.constraint(equalTo: diameterItem.bottomAnchor, constant: 48),
             wikipediaButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
             wikipediaButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
@@ -107,7 +94,15 @@ class SPXRocketSpecsView: UIView {
         ])
     }
     
-    @objc func wikipediaButtonTapped() {
-        delegate.didTapWikipediaButton(for: rocket)
+    func setupExtraConfiguration() {
+        guard let rocket = rocket else { return }
+        
+        companyLabel.text = "Company: \(rocket.company)"
+        countryLabel.text = "Country: \(rocket.country)"
+        heightItem.set(itemInfoType: .height, withValue: rocket.height)
+        diameterItem.set(itemInfoType: .diameter, withValue: rocket.diameter)
+        massItem.set(itemInfoType: .mass, withValue: Float(rocket.mass))
+        
+        wikipediaButton.addTarget(self, action: #selector(wikipediaButtonTapped), for: .touchUpInside)
     }
 }
