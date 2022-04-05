@@ -9,36 +9,37 @@ import UIKit
 
 class SPXNextLaunchView: UIView {
     
+    // MARK: - UI Elements
     let titleLabel = SPXTitleLabel(textAlignment: .left, fontSize: 22)
     let dateLabel = SPXTitleLabel(textAlignment: .center, fontSize: 22)
     
-    let padding: CGFloat = 30
-    
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        configureNextLaunchCard()
-        configure()
+        turnIntoCard(view: self)
+        setupViewCode()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public methods
     func updateUI(withDateString launchDate: String) {
         dateLabel.text = launchDate
     }
+}
+
+extension SPXNextLaunchView: ViewCode {
     
-    private func configureNextLaunchCard() {
-        turnIntoCard(view: self)
-        
-        titleLabel.text = "Next Launch in"
-        titleLabel.textColor = .systemIndigo
+    func setupComponents() {
+        addSubviews(titleLabel, dateLabel)
     }
     
-    private func configure() {
-        addSubviews(titleLabel, dateLabel)
+    func setupConstraints() {
+        let padding: CGFloat = 30
         
+        self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
@@ -49,5 +50,10 @@ class SPXNextLaunchView: UIView {
             dateLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             dateLabel.heightAnchor.constraint(equalToConstant: 24),
         ])
+    }
+    
+    func setupExtraConfiguration() {
+        titleLabel.text = "Next Launch in"
+        titleLabel.textColor = .systemIndigo
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 protocol NetworkServiceProtocol {
     func getUpcomingLaunches(completion: (@escaping (Result<[Launch], APIError>) -> Void))
     func getRockets(completion: (@escaping (Result<[Rocket], APIError>) -> Void))
+    func getLatestLaunch(completion: @escaping (Result<Launch, APIError>) -> Void)
+    func getNextLaunch(completion: @escaping (Result<Launch, APIError>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -41,6 +43,42 @@ final class NetworkService: NetworkServiceProtocol {
                     decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
                     let rockets = try decoder.decode([Rocket].self, from: data)
                     completion(.success(rockets))
+                } catch {
+                    completion(.failure(.invalidData))
+                }
+            case .failure(_):
+                completion(.failure(.unableToComplete))
+            }
+        }
+    }
+    
+    func getLatestLaunch(completion: @escaping (Result<Launch, APIError>) -> Void) {
+        NetworkManager.shared.request(endPoint: .latestLaunch) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
+                    let launch = try decoder.decode(Launch.self, from: data)
+                    completion(.success(launch))
+                } catch {
+                    completion(.failure(.invalidData))
+                }
+            case .failure(_):
+                completion(.failure(.unableToComplete))
+            }
+        }
+    }
+    
+    func getNextLaunch(completion: @escaping (Result<Launch, APIError>) -> Void) {
+        NetworkManager.shared.request(endPoint: .nextLaunch) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
+                    let launch = try decoder.decode(Launch.self, from: data)
+                    completion(.success(launch))
                 } catch {
                     completion(.failure(.invalidData))
                 }

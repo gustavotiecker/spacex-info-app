@@ -33,7 +33,6 @@
 		93A33A8A25801E0100DD4A3C /* SPXAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A8925801E0100DD4A3C /* SPXAlertContainerView.swift */; };
 		93A33A8E25801E8000DD4A3C /* SPXAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A8D25801E8000DD4A3C /* SPXAlertVC.swift */; };
 		93A33A9325801F0900DD4A3C /* SPXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A9225801F0900DD4A3C /* SPXButton.swift */; };
-		93A33A972580237500DD4A3C /* SPXError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A33A962580237500DD4A3C /* SPXError.swift */; };
 		93ADF56025914CC40039B104 /* SPXRocketSpecItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ADF55F25914CC40039B104 /* SPXRocketSpecItem.swift */; };
 		93C7D6AB258B992800293A2F /* RocketInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6AA258B992800293A2F /* RocketInfoViewController.swift */; };
 		93C7D6B1258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7D6B0258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift */; };
@@ -45,6 +44,7 @@
 		93EF56A427F8D40500D5BAD0 /* RocketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF56A327F8D40500D5BAD0 /* RocketsViewModel.swift */; };
 		93EF56A727F8DC9D00D5BAD0 /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF56A627F8DC9D00D5BAD0 /* ViewCode.swift */; };
 		93EF56AB27FBC2CD00D5BAD0 /* UpcomingLaunchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF56AA27FBC2CD00D5BAD0 /* UpcomingLaunchesViewModel.swift */; };
+		93EF56AF27FBD04200D5BAD0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF56AE27FBD04200D5BAD0 /* HomeViewModel.swift */; };
 		93F9592925A4FAD3004690DB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F9592825A4FAD3004690DB /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +77,6 @@
 		93A33A8925801E0100DD4A3C /* SPXAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXAlertContainerView.swift; sourceTree = "<group>"; };
 		93A33A8D25801E8000DD4A3C /* SPXAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXAlertVC.swift; sourceTree = "<group>"; };
 		93A33A9225801F0900DD4A3C /* SPXButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXButton.swift; sourceTree = "<group>"; };
-		93A33A962580237500DD4A3C /* SPXError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXError.swift; sourceTree = "<group>"; };
 		93ADF55F25914CC40039B104 /* SPXRocketSpecItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXRocketSpecItem.swift; sourceTree = "<group>"; };
 		93C7D6AA258B992800293A2F /* RocketInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketInfoViewController.swift; sourceTree = "<group>"; };
 		93C7D6B0258B9D1A00293A2F /* SPXSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPXSecondaryTitleLabel.swift; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		93EF56A327F8D40500D5BAD0 /* RocketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsViewModel.swift; sourceTree = "<group>"; };
 		93EF56A627F8DC9D00D5BAD0 /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		93EF56AA27FBC2CD00D5BAD0 /* UpcomingLaunchesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingLaunchesViewModel.swift; sourceTree = "<group>"; };
+		93EF56AE27FBD04200D5BAD0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		93F9592825A4FAD3004690DB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,7 +154,6 @@
 				9395081F25815E5100B40C62 /* Extensions */,
 				93A33A8325800A2100DD4A3C /* Model */,
 				93A33A7F2580096800DD4A3C /* Network */,
-				93A33A71257FB82B00DD4A3C /* Utilities */,
 				934657B4257ABC6500392967 /* Scenes */,
 				934657B3257ABC5800392967 /* CustomViews */,
 				9346579B257A762E00392967 /* AppDelegate.swift */,
@@ -227,15 +226,6 @@
 			path = ImageViews;
 			sourceTree = "<group>";
 		};
-		93A33A71257FB82B00DD4A3C /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				93A33A72257FB83F00DD4A3C /* Constants.swift */,
-				93A33A962580237500DD4A3C /* SPXError.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		93A33A76257FBD5300DD4A3C /* Labels */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,7 +283,8 @@
 		93EF569C27F8CEA700D5BAD0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				93F9592825A4FAD3004690DB /* HomeViewController.swift */,
+				93EF56AD27FBD02E00D5BAD0 /* ViewModel */,
+				93EF56AC27FBD02700D5BAD0 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -336,6 +327,7 @@
 		93EF56A527F8DC8400D5BAD0 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				93A33A72257FB83F00DD4A3C /* Constants.swift */,
 				93EF56A627F8DC9D00D5BAD0 /* ViewCode.swift */,
 			);
 			path = Foundation;
@@ -354,6 +346,22 @@
 			isa = PBXGroup;
 			children = (
 				93EF56AA27FBC2CD00D5BAD0 /* UpcomingLaunchesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		93EF56AC27FBD02700D5BAD0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93F9592825A4FAD3004690DB /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93EF56AD27FBD02E00D5BAD0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				93EF56AE27FBD04200D5BAD0 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -432,7 +440,6 @@
 				93A33A9325801F0900DD4A3C /* SPXButton.swift in Sources */,
 				93C8569F25A65CF100C69E8F /* SPXNextLaunchView.swift in Sources */,
 				93A33A812580097E00DD4A3C /* NetworkManager.swift in Sources */,
-				93A33A972580237500DD4A3C /* SPXError.swift in Sources */,
 				93A33A5D257ED66300DD4A3C /* UpcomingLaunchesViewController.swift in Sources */,
 				93C7D6BB258C410800293A2F /* UIView+Ext.swift in Sources */,
 				93EF56A427F8D40500D5BAD0 /* RocketsViewModel.swift in Sources */,
@@ -446,6 +453,7 @@
 				93A33A8A25801E0100DD4A3C /* SPXAlertContainerView.swift in Sources */,
 				93C7D6C3258D183800293A2F /* SPXRocketInfoHeaderView.swift in Sources */,
 				93ADF56025914CC40039B104 /* SPXRocketSpecItem.swift in Sources */,
+				93EF56AF27FBD04200D5BAD0 /* HomeViewModel.swift in Sources */,
 				93F9592925A4FAD3004690DB /* HomeViewController.swift in Sources */,
 				93C7D6AB258B992800293A2F /* RocketInfoViewController.swift in Sources */,
 				9331908625A7745E009071BD /* SPXLatestLaunchView.swift in Sources */,

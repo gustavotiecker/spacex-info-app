@@ -13,8 +13,10 @@ protocol SPXLatestLaunchDelegate: AnyObject {
 
 class SPXLatestLaunchView: UIView {
     
+    // MARK: - Properties
     weak var delegate: SPXLatestLaunchDelegate!
     
+    // MARK: - UI Elements
     let titleLabel = SPXTitleLabel(textAlignment: .left, fontSize: 22)
     let patchImageView = SPXAvatarImageView(frame: .zero)
     let nameLabel = SPXTitleLabel(textAlignment: .center, fontSize: 16)
@@ -22,22 +24,19 @@ class SPXLatestLaunchView: UIView {
     let dateLabel = SPXSecondaryTitleLabel(fontSize: 18)
     let redditButton = SPXButton(backgroundColor: .systemIndigo, title: "Campaign page")
     
-    let lateralPadding: CGFloat = 30
-    let topPadding: CGFloat = 20
-    
+    // MARK: - Initializers
     init(delegate: SPXLatestLaunchDelegate) {
         super.init(frame: .zero)
         self.delegate = delegate
-        
         turnIntoCard(view: self)
-        configureElementsPosition()
-        configureRedditButton()
+        setupViewCode()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public methods
     func updateUI(with launch: Launch) {
         titleLabel.text = "Latest launch"
         titleLabel.textColor = .systemIndigo
@@ -59,9 +58,22 @@ class SPXLatestLaunchView: UIView {
         }
     }
     
-    private func configureElementsPosition() {
+    // MARK: - Actions
+    @objc func redditButtonTapped() {
+        delegate.didTapRedditButton()
+    }
+}
+
+extension SPXLatestLaunchView: ViewCode {
+    func setupComponents() {
         addSubviews(titleLabel, patchImageView, nameLabel, successLabel, dateLabel, redditButton)
+    }
+    
+    func setupConstraints() {
+        let lateralPadding: CGFloat = 30
+        let topPadding: CGFloat = 20
         
+        self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateralPadding),
@@ -92,11 +104,7 @@ class SPXLatestLaunchView: UIView {
         ])
     }
     
-    private func configureRedditButton() {
+    func setupExtraConfiguration() {
         redditButton.addTarget(self, action: #selector(redditButtonTapped), for: .touchUpInside)
-    }
-    
-    @objc func redditButtonTapped() {
-        delegate.didTapRedditButton()
     }
 }

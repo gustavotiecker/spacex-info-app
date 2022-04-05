@@ -16,7 +16,9 @@ class SPXTabBarController: UITabBarController {
     }
     
     func createHomeVC() -> UINavigationController {
-        let viewController = HomeViewController()
+        let viewModel = HomeViewModel()
+        let viewController = HomeViewController(viewModel: viewModel)
+        viewModel.viewDelegate = viewController
         viewController.title = "Home"
         viewController.tabBarItem = UITabBarItem(title: "Home", image: SFSymbols.home, tag: 0)
         
