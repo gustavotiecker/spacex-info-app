@@ -13,28 +13,47 @@ enum ItemInfoType {
 
 class SPXRocketSpecItem: UIView {
     
+    // MARK: - UI Elements
     let symbolImageView = UIImageView()
     let titleLabel = SPXTitleLabel(textAlignment: .center, fontSize: 14)
     let valueLabel = SPXSecondaryTitleLabel(fontSize: 14)
     
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        setupViewCode()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure() {
+    // MARK: - Public methods
+    func set(itemInfoType: ItemInfoType, withValue value: Float) {
+        switch itemInfoType {
+        case .height:
+            symbolImageView.image = SFSymbols.height
+            titleLabel.text = "Height"
+            valueLabel.text = "\(value)m"
+        case .diameter:
+            symbolImageView.image = SFSymbols.diameter
+            titleLabel.text = "Diameter"
+            valueLabel.text = "\(value)m"
+        case .mass:
+            symbolImageView.image = SFSymbols.mass
+            titleLabel.text = "Mass"
+            valueLabel.text = "\(value)kg"
+        }
+    }
+}
+
+extension SPXRocketSpecItem: ViewCode {
+    
+    func setupComponents() {
         addSubviews(symbolImageView, titleLabel, valueLabel)
-        
-        symbolImageView.translatesAutoresizingMaskIntoConstraints = false
-        symbolImageView.contentMode = .scaleAspectFill
-        symbolImageView.tintColor = .label
-        
-        valueLabel.textAlignment = .center
-        
+    }
+    
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             symbolImageView.topAnchor.constraint(equalTo: self.topAnchor),
             symbolImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -53,20 +72,10 @@ class SPXRocketSpecItem: UIView {
         ])
     }
     
-    func set(itemInfoType: ItemInfoType, withValue value: Float) {
-        switch itemInfoType {
-        case .height:
-            symbolImageView.image = SFSymbols.height
-            titleLabel.text = "Height"
-            valueLabel.text = "\(value)m"
-        case .diameter:
-            symbolImageView.image = SFSymbols.diameter
-            titleLabel.text = "Diameter"
-            valueLabel.text = "\(value)m"
-        case .mass:
-            symbolImageView.image = SFSymbols.mass
-            titleLabel.text = "Mass"
-            valueLabel.text = "\(value)kg"
-        }
+    func setupExtraConfiguration() {
+        symbolImageView.translatesAutoresizingMaskIntoConstraints = false
+        symbolImageView.contentMode = .scaleAspectFill
+        symbolImageView.tintColor = .label
+        valueLabel.textAlignment = .center
     }
 }
