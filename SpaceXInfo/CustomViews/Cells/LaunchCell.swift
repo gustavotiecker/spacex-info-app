@@ -9,20 +9,25 @@ import UIKit
 
 class LaunchCell: UITableViewCell {
     
+    // MARK: - Properties
     static let reuseID = "LaunchCell"
+    
+    // MARK: - UI Elements
     let avatarImageView = SPXAvatarImageView(frame: .zero)
     let missionName = SPXTitleLabel(textAlignment: .left, fontSize: 16)
     let missionDate = SPXBodyLabel(textAlignment: .left)
     
+    // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configure()
+        setupViewCode()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public methods
     func set(launch: Launch) {
         missionName.text = launch.missionName
         if let smallPatchURL = launch.smallPatchURL {
@@ -30,13 +35,15 @@ class LaunchCell: UITableViewCell {
         }
         missionDate.text = launch.date.convertToMonthDayYearTimeFormat()
     }
+}
+
+extension LaunchCell: ViewCode {
     
-    private func configure() {
+    func setupComponents() {
         addSubviews(avatarImageView, missionName, missionDate)
-        
-        accessoryType = .disclosureIndicator
-        selectionStyle = .none
-        
+    }
+    
+    func setupConstraints() {
         let padding: CGFloat = 8
         let paddingTopBottom: CGFloat = 12
         
@@ -56,5 +63,10 @@ class LaunchCell: UITableViewCell {
             missionDate.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             missionDate.heightAnchor.constraint(equalToConstant: 20)
         ])
+    }
+    
+    func setupExtraConfiguration() {
+        accessoryType = .disclosureIndicator
+        selectionStyle = .none
     }
 }

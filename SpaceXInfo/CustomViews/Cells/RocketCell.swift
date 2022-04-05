@@ -9,29 +9,37 @@ import UIKit
 
 class RocketCell: UITableViewCell {
     
+    // MARK: - Properties
     static let reuseID = "RocketCell"
+    
+    // MARK: - UI Elements
     let avatarImageView = SPXAvatarImageView(frame: .zero)
     let rocketNameLabel = SPXTitleLabel(textAlignment: .left, fontSize: 26)
     
+    // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configure()
+        setupViewCode()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public methods
     func set(rocket: Rocket) {
         avatarImageView.downloadImage(fromURL: rocket.images[0])
         rocketNameLabel.text = rocket.name
     }
+}
+
+extension RocketCell: ViewCode {
     
-    func configure() {
+    func setupComponents() {
         addSubviews(avatarImageView, rocketNameLabel)
-        
-        accessoryType = .disclosureIndicator
-        selectionStyle = .none
+    }
+    
+    func setupConstraints() {
         let padding: CGFloat = 12
         
         NSLayoutConstraint.activate([
@@ -45,5 +53,10 @@ class RocketCell: UITableViewCell {
             rocketNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             rocketNameLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
+    }
+    
+    func setupExtraConfiguration() {
+        accessoryType = .disclosureIndicator
+        selectionStyle = .none
     }
 }
