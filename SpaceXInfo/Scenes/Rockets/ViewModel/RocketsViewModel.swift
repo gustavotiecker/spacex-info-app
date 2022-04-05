@@ -12,7 +12,6 @@ protocol RocketsBusinessLogic {
     func getNumberOfRows() -> Int
     func getRocket(at indexPath: IndexPath) -> Rocket
     
-    
     // MARK: - Network
     func fetchRockets()
 }
@@ -25,8 +24,8 @@ protocol RocketsViewDelegate: AnyObject {
 final class RocketsViewModel {
     
     // MARK: - Properties
-    var rockets: [Rocket] = []
-    var networkService: NetworkServiceProtocol = NetworkService()
+    private var rockets: [Rocket] = []
+    private var networkService: NetworkServiceProtocol = NetworkService()
     weak var viewDelegate: RocketsViewDelegate?
 }
 

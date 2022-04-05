@@ -24,7 +24,9 @@ class SPXTabBarController: UITabBarController {
     }
     
     func createUpcomingLaunchesVC() -> UINavigationController {
-        let viewController = UpcomingLaunchesViewController()
+        let viewModel = UpcomingLaunchesViewModel()
+        let viewController = UpcomingLaunchesViewController(viewModel: viewModel)
+        viewModel.viewDelegate = viewController
         viewController.title = "Upcoming Launches"
         viewController.tabBarItem = UITabBarItem(title: "Upcoming", image: SFSymbols.upcoming, tag: 1)
         

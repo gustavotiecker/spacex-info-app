@@ -77,82 +77,6 @@ class NetworkManager {
         task.resume()
     }
     
-    func getUpcomingLaunches(completion: @escaping (Result<[Launch], SPXError>) -> Void) {
-        let endpoint = baseURL + "/launches/upcoming"
-
-        guard let url = URL(string: endpoint) else {
-            completion(.failure(.invalidRequest))
-            return
-        }
-
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-
-            if let _ = error {
-                completion(.failure(.unableToComplete))
-                return
-            }
-
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completion(.failure(.invalidResponse))
-                return
-            }
-
-            guard let data = data else {
-                completion(.failure(.invalidData))
-                return
-            }
-
-            do {
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
-                let launches = try decoder.decode([Launch].self, from: data)
-                completion(.success(launches))
-            } catch {
-                completion(.failure(.invalidData))
-            }
-        }
-
-        task.resume()
-    }
-//
-//    func getRockets(completion: @escaping (Result<[Rocket], SPXError>) -> Void) {
-//        let endpoint = baseURL + "/rockets"
-//
-//        guard let url = URL(string: endpoint) else {
-//            completion(.failure(.invalidRequest))
-//            return
-//        }
-//
-//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//
-//            if let _ = error {
-//                completion(.failure(.unableToComplete))
-//                return
-//            }
-//
-//            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//                completion(.failure(.invalidResponse))
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completion(.failure(.invalidData))
-//                return
-//            }
-//
-//            do {
-//                let decoder = JSONDecoder()
-//                decoder.dateDecodingStrategy = .formatted(DateFormatter.fullISO8601)
-//                let rockets = try decoder.decode([Rocket].self, from: data)
-//                completion(.success(rockets))
-//            } catch {
-//                completion(.failure(.invalidData))
-//            }
-//        }
-//
-//        task.resume()
-//    }
-    
     func getLatestLaunch(completion: @escaping (Result<Launch, SPXError>) -> Void) {
         let endpoint = baseURL + "/launches/latest"
         
@@ -238,10 +162,8 @@ class NetworkManager {
                     completion(nil)
                     return
                 }
-            
             completion(image)
         }
-        
         task.resume()
     }
 }

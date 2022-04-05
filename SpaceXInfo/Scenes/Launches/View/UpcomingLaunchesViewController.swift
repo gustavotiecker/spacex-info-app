@@ -1,5 +1,5 @@
 //
-//  RocketsViewController.swift
+//  UpcomingLaunchesViewController.swift
 //  SpaceXInfo
 //
 //  Created by Gustavo Tiecker on 07/12/20.
@@ -7,22 +7,22 @@
 
 import UIKit
 
-class RocketsViewController: UIViewController {
+class UpcomingLaunchesViewController: UIViewController {
     
     // MARK: - Properties
-    private let viewModel: RocketsBusinessLogic
+    private let viewModel: UpcomingLaunchesBusinessLogic
     
     // MARK: - UI Elements
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = 80
         tableView.removeExcessCells()
-        tableView.register(RocketCell.self, forCellReuseIdentifier: RocketCell.reuseID)
+        tableView.register(LaunchCell.self, forCellReuseIdentifier: LaunchCell.reuseID)
         return tableView
     }()
-
+    
     // MARK: - Initializers
-    init(viewModel: RocketsBusinessLogic) {
+    init(viewModel: UpcomingLaunchesBusinessLogic) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -30,35 +30,35 @@ class RocketsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
         setupViewCode()
         setupDelegates()
-        viewModel.fetchRockets()
+        viewModel.fetchUpcomingLaunches()
     }
     
     // MARK: - Private methods
     private func setupViewController() {
         view.backgroundColor = .systemBackground
-        title = "Rockets"
+        title = "Upcoming Launches"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    private func setupDelegates() {
+    func setupDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
     }
 }
 
-extension RocketsViewController: UITableViewDelegate {
+extension UpcomingLaunchesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let navController = UINavigationController(
-            rootViewController: RocketInfoViewController(
-                rocket: viewModel.getRocket(at: indexPath)
+            rootViewController: LaunchInfoViewController(
+                launch: viewModel.getLaunch(at: indexPath)
             )
         )
         
@@ -66,31 +66,31 @@ extension RocketsViewController: UITableViewDelegate {
     }
 }
 
-extension RocketsViewController: UITableViewDataSource {
+extension UpcomingLaunchesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.getNumberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: RocketCell.reuseID) as! RocketCell
-        cell.set(rocket: viewModel.getRocket(at: indexPath))
+        let cell = tableView.dequeueReusableCell(withIdentifier: LaunchCell.reuseID) as! LaunchCell
+        cell.set(launch: viewModel.getLaunch(at: indexPath))
         return cell
     }
 }
 
-extension RocketsViewController: RocketsViewDelegate {
+extension UpcomingLaunchesViewController: UpcomingLaunchesViewDelegate {
     
-    func didFetchRocketsWithSuccess() {
+    func didFetchUpcomingLaunchesWithSuccess() {
         tableView.reloadDataOnMainThread()
     }
     
-    func didFetchRocketsWithError(message: String) {
+    func didFetchUpcomingLaunchesWithError(message: String) {
         presentAlert(title: "Error", message: message, buttonTitle: "Ok")
     }
 }
 
-extension RocketsViewController: ViewCode {
+extension UpcomingLaunchesViewController: ViewCode {
     
     func setupComponents() {
         view.addSubview(tableView)

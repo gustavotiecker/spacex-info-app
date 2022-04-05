@@ -15,7 +15,7 @@ class SPXRocketSpecsView: UIView {
     
     // MARK: - Properties
     weak var delegate: SPXItemDelegate?
-    var rocket: Rocket?
+    private var rocket: Rocket?
     
     // MARK: - UI Elements
     let companyLabel = SPXSecondaryTitleLabel(fontSize: 20)
@@ -26,6 +26,7 @@ class SPXRocketSpecsView: UIView {
     var itemViews: [UIView] = []
     let wikipediaButton = SPXButton(backgroundColor: .systemIndigo, title: "Wikipedia's page")
     
+    // MARK: - Initializers
     init() {
         super.init(frame: .zero)
         setupView()
@@ -35,18 +36,21 @@ class SPXRocketSpecsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public methods
     func setup(with rocket: Rocket, delegate: SPXItemDelegate) {
         self.rocket = rocket
         self.delegate = delegate
         setupViewCode()
     }
     
+    // MARK: - Private methods
     private func setupView() {
         layer.cornerRadius = 18
         backgroundColor = .secondarySystemBackground
     }
  
-    @objc func wikipediaButtonTapped() {
+    // MARK: - Actions
+    @objc private func wikipediaButtonTapped() {
         guard let rocket = rocket else { return }
         delegate?.didTapWikipediaButton(for: rocket)
     }

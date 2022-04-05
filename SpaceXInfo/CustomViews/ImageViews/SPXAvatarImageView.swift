@@ -9,8 +9,10 @@ import UIKit
 
 class SPXAvatarImageView: UIImageView {
     
+    // MARK: - Properties
     let placeholderImage = Images.placeholder
     
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -20,6 +22,7 @@ class SPXAvatarImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Private Methods
     private func configure() {
         layer.cornerRadius = 10
         clipsToBounds = true

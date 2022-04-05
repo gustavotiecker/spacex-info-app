@@ -9,12 +9,14 @@ import UIKit
 
 class RocketInfoViewController: UIViewController {
     
+    // MARK: - Properties
     private var rocket: Rocket
     
     private let headerView = SPXRocketInfoHeaderView()
     private let rocketSpecsView = SPXRocketSpecsView()
     
     
+    // MARK: - Initializers
     init(rocket: Rocket) {
         self.rocket = rocket
         super.init(nibName: nil, bundle: nil)
@@ -24,6 +26,7 @@ class RocketInfoViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
