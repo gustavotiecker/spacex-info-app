@@ -28,7 +28,7 @@ final class HomeViewModel {
     // MARK: - Properties
     private var latestLaunch: Launch?
     private var nextLaunch: Launch?
-    private var networkService: NetworkServiceProtocol = NetworkService()
+    var networkService: NetworkServiceProtocol = NetworkService()
     weak var viewDelegate: HomeViewDelegate?
 }
 

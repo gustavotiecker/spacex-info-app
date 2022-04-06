@@ -25,7 +25,7 @@ final class RocketsViewModel {
     
     // MARK: - Properties
     private var rockets: [Rocket] = []
-    private var networkService: NetworkServiceProtocol = NetworkService()
+    var networkService: NetworkServiceProtocol = NetworkService()
     weak var viewDelegate: RocketsViewDelegate?
 }
 

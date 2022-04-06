@@ -25,7 +25,7 @@ final class UpcomingLaunchesViewModel {
     
     // MARK: - Properties
     private var launches: [Launch] = []
-    private var networkService: NetworkServiceProtocol = NetworkService()
+    var networkService: NetworkServiceProtocol = NetworkService()
     weak var viewDelegate: UpcomingLaunchesViewDelegate?
 }
 
