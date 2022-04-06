@@ -20,6 +20,14 @@ final class NetworkServiceSpy: NetworkServiceProtocol {
     }
     
     func getRockets(completion: @escaping ((Result<[Rocket], APIError>) -> Void)) {
+        self.requestCalled = true
+        self.completionPassed = completion
+        
+        if let resultToBeReturned = resultToBeReturned {
+           completion(resultToBeReturned as! Result<[Rocket], APIError>)
+        } else {
+            completion(.failure(.unableToComplete))
+        }
     }
     
     func getLatestLaunch(completion: @escaping (Result<Launch, APIError>) -> Void) {
